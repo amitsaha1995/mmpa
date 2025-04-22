@@ -1,157 +1,162 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mathabhanga Modern Public Academy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python with Amit Sir - Dashboard</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      box-sizing: border-box;
-    }
-
     body {
-      background: linear-gradient(to right, #a8edea, #fed6e3);
-      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #ffffff;
     }
-
     header {
-      background-color: #2e86de;
-      color: white;
+      background-color: #1f1f1f;
       padding: 20px;
       text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      font-size: 24px;
+      font-weight: bold;
+      color: #00c3ff;
     }
-
-    header h1 {
-      font-size: 28px;
+    .container {
+      padding: 20px;
     }
-
-    header p {
-      font-size: 16px;
-    }
-
-    nav {
-      background: #ffffff;
+    .lesson {
+      background-color: #1e1e1e;
       padding: 15px;
-      display: flex;
-      justify-content: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      margin-bottom: 15px;
+      transition: transform 0.2s ease;
     }
-
-    nav a {
-      text-decoration: none;
-      color: #2e86de;
-      margin: 0 20px;
-      font-weight: 600;
-      transition: color 0.3s;
+    .lesson:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 10px #00c3ff;
     }
-
-    nav a:hover {
-      color: #f39c12;
+    .lesson h2 {
+      margin: 0 0 10px;
+      color: #00c3ff;
     }
-
-    .dashboard {
-      padding: 30px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+    .youtube {
+      margin-top: 10px;
+      color: #ff4081;
     }
-
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: transform 0.3s ease, background 0.3s ease;
-      animation: fadeIn 0.7s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      background: #f0faff;
-    }
-
-    .card h2 {
-      font-size: 22px;
-      color: #2e86de;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      font-size: 14px;
-      color: #555;
-    }
-
-    footer {
-      background-color: #2e86de;
-      color: white;
-      text-align: center;
+    .quiz, .scorecard, .leaderboard {
+      background-color: #1e1e1e;
       padding: 15px;
-      margin-top: 30px;
+      border-radius: 10px;
+      margin-top: 20px;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+    .button {
+      background-color: #00c3ff;
+      color: #000;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
     }
-
-    @media (max-width: 600px) {
-      header h1 { font-size: 22px; }
-      nav { flex-direction: column; }
-      nav a { margin: 10px 0; }
+    .button:hover {
+      background-color: #00a5d3;
+    }
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
+  <header>Python with Amit Sir - Student Dashboard</header>
+  <div class="container" id="dashboard">
+    <div class="lesson" id="lesson1">
+      <h2>Lesson 1: Introduction to Python</h2>
+      <p>Learn what Python is, and how it is used in the real world.</p>
+      <a href="https://www.youtube.com/watch?v=_uQrJ0TkZlc" class="youtube" target="_blank">Watch Tutorial</a>
+      <button class="button" onclick="startQuiz(1)">Start Quiz</button>
+    </div><div class="lesson hidden" id="lesson2">
+  <h2>Lesson 2: Variables and Data Types</h2>
+  <p>Understand how to use variables and data types in Python.</p>
+  <a href="https://www.youtube.com/watch?v=ohCDWZgNIU0" class="youtube" target="_blank">Watch Tutorial</a>
+  <button class="button" onclick="startQuiz(2)">Start Quiz</button>
+</div>
 
-  <header>
-    <h1>Mathabhanga Modern Public Academy</h1>
-    <p>Located in Mathabhanga, Coochbehar | Inspiring the Future</p>
-  </header>
+<div class="quiz hidden" id="quiz">
+  <h3 id="quiz-question"></h3>
+  <div id="quiz-options"></div>
+  <button class="button" onclick="submitAnswer()">Submit</button>
+</div>
 
-  <nav>
-    <a href="#">Dashboard</a>
-    <a href="#">Students</a>
-    <a href="#">Teachers</a>
-    <a href="#">Attendance</a>
-    <a href="#">Notices</a>
-  </nav>
+<div class="scorecard">
+  <h3>Your Score: <span id="score">0</span></h3>
+</div>
 
-  <div class="dashboard">
-    <div class="card">
-      <h2>📚 Students</h2>
-      <p>Manage student data, attendance, and profiles.</p>
-    </div>
-    <div class="card">
-      <h2>👨‍🏫 Teachers</h2>
-      <p>View and assign teacher responsibilities.</p>
-    </div>
-    <div class="card">
-      <h2>📆 Timetable</h2>
-      <p>Review or update class schedules and sessions.</p>
-    </div>
-    <div class="card">
-      <h2>📢 Notices</h2>
-      <p>Post or review important school announcements.</p>
-    </div>
-    <div class="card">
-      <h2>📈 Reports</h2>
-      <p>Generate academic and activity reports.</p>
-    </div>
-    <div class="card">
-      <h2>📥 Admissions</h2>
-      <p>Track new applications and admission status.</p>
-    </div>
-  </div>
+<div class="leaderboard">
+  <h3>Leaderboard</h3>
+  <ol id="leaderboard-list">
+    <li>Amit - 2</li>
+    <li>Riya - 1</li>
+    <li>You - <span id="your-rank">0</span></li>
+  </ol>
+</div>
 
-  <footer>
-    © 2025 Mathabhanga Modern Public Academy. All rights reserved.
-  </footer>
+  </div>  <script>
+    let currentLesson = 1;
+    let score = parseInt(localStorage.getItem('userScore')) || 0;
+    document.getElementById('score').innerText = score;
+    document.getElementById('your-rank').innerText = score;
 
-</body>
+    const quizData = {
+      1: {
+        question: 'Which of the following is a Python data type?',
+        options: ['Banana', 'Integer', 'Facebook', 'URL'],
+        correctIndex: 1
+      },
+      2: {
+        question: 'What symbol is used to assign a value to a variable in Python?',
+        options: ['==', '=', '!=', '<-'],
+        correctIndex: 1
+      }
+    };
+
+    let selectedOptionIndex = null;
+
+    function startQuiz(lessonNum) {
+      currentLesson = lessonNum;
+      const quiz = quizData[lessonNum];
+      document.getElementById('quiz-question').innerText = quiz.question;
+
+      const optionsContainer = document.getElementById('quiz-options');
+      optionsContainer.innerHTML = '';
+      quiz.options.forEach((option, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'button';
+        btn.style.margin = '5px';
+        btn.innerText = option;
+        btn.onclick = () => selectedOptionIndex = index;
+        optionsContainer.appendChild(btn);
+      });
+
+      document.getElementById('quiz').classList.remove('hidden');
+    }
+
+    function submitAnswer() {
+      if (selectedOptionIndex === null) {
+        alert('Please select an option.');
+        return;
+      }
+      const correct = quizData[currentLesson].correctIndex;
+      if (selectedOptionIndex === correct) {
+        alert('Correct!');
+        score++;
+        localStorage.setItem('userScore', score);
+        document.getElementById('score').innerText = score;
+        document.getElementById('your-rank').innerText = score;
+        if (currentLesson === 1) {
+          document.getElementById('lesson2').classList.remove('hidden');
+        }
+      } else {
+        alert('Wrong answer. Try again!');
+      }
+      selectedOptionIndex = null;
+      document.getElementById('quiz').classList.add('hidden');
+    }
+  </script></body>
 </html>
