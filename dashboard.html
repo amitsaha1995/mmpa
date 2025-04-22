@@ -2,161 +2,153 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python with Amit Sir - Dashboard</title>
+  <title>Python with Amit Sir - Course Dashboard</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #121212;
-      color: #ffffff;
+      background: #121212;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     header {
-      background-color: #1f1f1f;
-      padding: 20px;
+      background: #1e1e1e;
+      padding: 1rem;
       text-align: center;
-      font-size: 24px;
+      font-size: 1.5rem;
       font-weight: bold;
-      color: #00c3ff;
+      animation: fadeInDown 1s ease;
     }
-    .container {
-      padding: 20px;
+    #welcome {
+      background: #2b2b2b;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 1.2rem;
+      border-bottom: 2px solid #00e676;
+      animation: fadeInDown 1.2s ease;
     }
-    .lesson {
-      background-color: #1e1e1e;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      transition: transform 0.2s ease;
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+      animation: fadeIn 1.5s ease;
     }
-    .lesson:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 10px #00c3ff;
+    .module {
+      background: #242424;
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s;
     }
-    .lesson h2 {
-      margin: 0 0 10px;
-      color: #00c3ff;
+    .module:hover {
+      transform: scale(1.03);
     }
-    .youtube {
-      margin-top: 10px;
-      color: #ff4081;
+    h2 {
+      color: #00e676;
+      font-size: 1.2rem;
     }
-    .quiz, .scorecard, .leaderboard {
-      background-color: #1e1e1e;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 20px;
+    p {
+      font-size: 0.95rem;
     }
-    .button {
-      background-color: #00c3ff;
+    .youtube-link {
+      color: #82b1ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .start-btn {
+      background: #00e676;
       color: #000;
+      padding: 0.5rem 1rem;
       border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
+      border-radius: 0.5rem;
+      margin-top: 0.5rem;
       cursor: pointer;
       font-weight: bold;
     }
-    .button:hover {
-      background-color: #00a5d3;
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .hidden {
-      display: none;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <header>Python with Amit Sir - Student Dashboard</header>
-  <div class="container" id="dashboard">
-    <div class="lesson" id="lesson1">
-      <h2>Lesson 1: Introduction to Python</h2>
-      <p>Learn what Python is, and how it is used in the real world.</p>
-      <a href="https://www.youtube.com/watch?v=_uQrJ0TkZlc" class="youtube" target="_blank">Watch Tutorial</a>
-      <button class="button" onclick="startQuiz(1)">Start Quiz</button>
-    </div><div class="lesson hidden" id="lesson2">
-  <h2>Lesson 2: Variables and Data Types</h2>
-  <p>Understand how to use variables and data types in Python.</p>
-  <a href="https://www.youtube.com/watch?v=ohCDWZgNIU0" class="youtube" target="_blank">Watch Tutorial</a>
-  <button class="button" onclick="startQuiz(2)">Start Quiz</button>
-</div>
-
-<div class="quiz hidden" id="quiz">
-  <h3 id="quiz-question"></h3>
-  <div id="quiz-options"></div>
-  <button class="button" onclick="submitAnswer()">Submit</button>
-</div>
-
-<div class="scorecard">
-  <h3>Your Score: <span id="score">0</span></h3>
-</div>
-
-<div class="leaderboard">
-  <h3>Leaderboard</h3>
-  <ol id="leaderboard-list">
-    <li>Amit - 2</li>
-    <li>Riya - 1</li>
-    <li>You - <span id="your-rank">0</span></li>
-  </ol>
-</div>
-
-  </div>  <script>
-    let currentLesson = 1;
-    let score = parseInt(localStorage.getItem('userScore')) || 0;
-    document.getElementById('score').innerText = score;
-    document.getElementById('your-rank').innerText = score;
-
-    const quizData = {
-      1: {
-        question: 'Which of the following is a Python data type?',
-        options: ['Banana', 'Integer', 'Facebook', 'URL'],
-        correctIndex: 1
+  <header>Python with Amit Sir - Learning Dashboard</header>
+  <div id="welcome">Welcome to Amit Sir's Python Course — Python Made Easy with Amit Sir</div>
+  <main id="dashboard">
+    <!-- Modules will be injected here -->
+  </main>  <script>
+    const modules = [
+      {
+        title: "Module 1: Introduction to Python",
+        description: "Learn what Python is, why it is popular, and how to install Python on your system.",
+        youtube: "https://www.youtube.com/watch?v=rfscVS0vtbw"
       },
-      2: {
-        question: 'What symbol is used to assign a value to a variable in Python?',
-        options: ['==', '=', '!=', '<-'],
-        correctIndex: 1
+      {
+        title: "Module 2: Variables and Data Types",
+        description: "Understand variables, strings, numbers, lists, tuples, dictionaries, and more.",
+        youtube: "https://www.youtube.com/watch?v=ohCDWZgNIU0"
+      },
+      {
+        title: "Module 3: Operators and Expressions",
+        description: "Explore arithmetic, relational, logical, assignment, and bitwise operators.",
+        youtube: "https://www.youtube.com/watch?v=VchuKL44s6E"
+      },
+      {
+        title: "Module 4: Control Flow",
+        description: "Master if statements, loops (while, for), and control keywords like break and continue.",
+        youtube: "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        title: "Module 5: Functions",
+        description: "Define and call functions, return values, and understand scope and arguments.",
+        youtube: "https://www.youtube.com/watch?v=NSbOtYzIQI0"
+      },
+      {
+        title: "Module 6: Modules and Packages",
+        description: "Learn how to use Python’s built-in modules and create your own packages.",
+        youtube: "https://www.youtube.com/watch?v=CqvZ3vGoGs0"
+      },
+      {
+        title: "Module 7: File Handling",
+        description: "Open, read, write, and close files in Python. Learn about file modes and operations.",
+        youtube: "https://www.youtube.com/watch?v=Uh2ebFW8OYM"
+      },
+      {
+        title: "Module 8: Object-Oriented Programming",
+        description: "Understand classes, objects, inheritance, and encapsulation in Python.",
+        youtube: "https://www.youtube.com/watch?v=JeznW_7DlB0"
+      },
+      {
+        title: "Module 9: Exception Handling",
+        description: "Catch and handle exceptions gracefully using try, except, finally, and raise.",
+        youtube: "https://www.youtube.com/watch?v=NIWwJbo-9_8"
+      },
+      {
+        title: "Module 10: Practice Project",
+        description: "Build a mini project using the skills you've learned throughout the course.",
+        youtube: "https://www.youtube.com/watch?v=XGf2GcyHPhc"
       }
-    };
+    ];
 
-    let selectedOptionIndex = null;
+    const dashboard = document.getElementById("dashboard");
+    modules.forEach((mod, index) => {
+      const card = document.createElement("div");
+      card.className = "module";
+      card.innerHTML = `
+        <h2>${mod.title}</h2>
+        <p>${mod.description}</p>
+        <a class="youtube-link" href="${mod.youtube}" target="_blank">Watch Tutorial</a><br />
+        <button class="start-btn" onclick="startModule(${index})">Start Lesson</button>
+      `;
+      dashboard.appendChild(card);
+    });
 
-    function startQuiz(lessonNum) {
-      currentLesson = lessonNum;
-      const quiz = quizData[lessonNum];
-      document.getElementById('quiz-question').innerText = quiz.question;
-
-      const optionsContainer = document.getElementById('quiz-options');
-      optionsContainer.innerHTML = '';
-      quiz.options.forEach((option, index) => {
-        const btn = document.createElement('button');
-        btn.className = 'button';
-        btn.style.margin = '5px';
-        btn.innerText = option;
-        btn.onclick = () => selectedOptionIndex = index;
-        optionsContainer.appendChild(btn);
-      });
-
-      document.getElementById('quiz').classList.remove('hidden');
-    }
-
-    function submitAnswer() {
-      if (selectedOptionIndex === null) {
-        alert('Please select an option.');
-        return;
-      }
-      const correct = quizData[currentLesson].correctIndex;
-      if (selectedOptionIndex === correct) {
-        alert('Correct!');
-        score++;
-        localStorage.setItem('userScore', score);
-        document.getElementById('score').innerText = score;
-        document.getElementById('your-rank').innerText = score;
-        if (currentLesson === 1) {
-          document.getElementById('lesson2').classList.remove('hidden');
-        }
-      } else {
-        alert('Wrong answer. Try again!');
-      }
-      selectedOptionIndex = null;
-      document.getElementById('quiz').classList.add('hidden');
+    function startModule(index) {
+      alert("Interactive lesson and quiz for " + modules[index].title + " coming soon!");
     }
   </script></body>
 </html>
