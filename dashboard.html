@@ -1,7 +1,8 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Python with Amit Sir - Dashboard</title>
   <style>
     body {
@@ -9,7 +10,6 @@
       margin: 0;
       background-color: #121212;
       color: #fff;
-      transition: background 0.3s ease, color 0.3s ease;
     }
     header, footer {
       text-align: center;
@@ -65,36 +65,46 @@
     <h1>Welcome to Amit Sir's Python Course</h1>
     <p><strong>Python Made Easy with Amit Sir</strong></p>
   </header>
+
   <div class="container">
     <section class="module" id="module1">
       <h2>Module 1: Introduction to Python</h2>
-      <p>Welcome to Python! Learn about Python syntax, variables, and basic input/output operations.</p><div class="quiz">
-    <h3>Quiz: Module 1</h3>
-    <form id="quizForm">
-      <p>1. What is the correct file extension for Python files?</p>
-      <label><input type="radio" name="q1" value="a"> .pt</label><br>
-      <label><input type="radio" name="q1" value="b"> .pyt</label><br>
-      <label><input type="radio" name="q1" value="c"> .py</label><br>
+      <p>Welcome to Python! In this module, you'll learn the basics: how Python works, syntax, variables, input/output, and comments.</p>
 
-      <p>2. Which keyword is used for function declaration in Python?</p>
-      <label><input type="radio" name="q2" value="a"> function</label><br>
-      <label><input type="radio" name="q2" value="b"> def</label><br>
-      <label><input type="radio" name="q2" value="c"> fun</label><br>
+      <div class="quiz">
+        <h3>Quiz: Module 1</h3>
+        <form id="quizForm">
+          <p>1. What is the correct file extension for Python files?</p>
+          <label><input type="radio" name="q1" value="a"> .pt</label><br>
+          <label><input type="radio" name="q1" value="b"> .pyt</label><br>
+          <label><input type="radio" name="q1" value="c"> .py</label><br>
 
-      <p>3. What does the print() function do?</p>
-      <label><input type="radio" name="q3" value="a"> Reads input</label><br>
-      <label><input type="radio" name="q3" value="b"> Outputs text</label><br>
-      <label><input type="radio" name="q3" value="c"> Declares a variable</label><br>
+          <p>2. Which keyword is used for function declaration in Python?</p>
+          <label><input type="radio" name="q2" value="a"> function</label><br>
+          <label><input type="radio" name="q2" value="b"> def</label><br>
+          <label><input type="radio" name="q2" value="c"> fun</label><br>
 
-      <button type="button" class="btn" onclick="submitQuiz()">Submit</button>
-    </form>
-    <div id="quizResult" class="score-board hidden"></div>
+          <p>3. What does the print() function do?</p>
+          <label><input type="radio" name="q3" value="a"> Reads input</label><br>
+          <label><input type="radio" name="q3" value="b"> Outputs text</label><br>
+          <label><input type="radio" name="q3" value="c"> Declares a variable</label><br>
+
+          <button type="button" class="btn" onclick="submitQuiz()">Submit</button>
+        </form>
+        <div id="quizResult" class="score-board hidden"></div>
+      </div>
+
+      <a href="https://www.youtube.com/watch?v=_uQrJ0TkZlc" target="_blank" class="yt-link">
+        Watch: Python Crash Course on YouTube
+      </a>
+    </section>
   </div>
 
-  <a href="https://www.youtube.com/watch?v=_uQrJ0TkZlc" target="_blank" class="yt-link">Watch: Python Crash Course on YouTube</a>
-</section>
+  <footer>
+    <p>&copy; 2025 Python with Amit Sir</p>
+  </footer>
 
-  </div>  <script>
+  <script>
     function submitQuiz() {
       const answers = {
         q1: 'c',
@@ -117,13 +127,11 @@
 
       if (score >= 2) {
         result.textContent += ' - Great! You unlocked Module 2.';
-        // Here you would unlock Module 2 dynamically
+        // Optional: Add logic here to enable next module
       } else {
         result.textContent += ' - Try again to unlock the next module.';
       }
     }
-  </script>  <footer>
-    <p>&copy; 2025 Python with Amit Sir</p>
-  </footer>
+  </script>
 </body>
 </html>
