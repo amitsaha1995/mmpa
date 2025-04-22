@@ -1,137 +1,142 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Python with Amit Sir - Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python with Amit Sir</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
+      font-family: Arial, sans-serif;
       background-color: #121212;
       color: #fff;
     }
     header, footer {
+      background-color: #1f1f1f;
+      padding: 20px;
       text-align: center;
-      padding: 1em;
-      background: #1e1e1e;
+    }
+    h1, h2 {
+      color: #00bcd4;
     }
     .container {
-      padding: 1em;
+      padding: 20px;
     }
     .module {
-      border: 1px solid #333;
+      background-color: #2a2a2a;
+      margin: 20px 0;
+      padding: 20px;
       border-radius: 10px;
-      margin: 1em 0;
-      padding: 1em;
-      background: #1f1f1f;
     }
     .quiz {
-      margin-top: 1em;
-      background: #222;
-      padding: 1em;
+      margin-top: 15px;
+    }
+    .quiz input[type="radio"] {
+      margin-right: 10px;
+    }
+    .correct {
+      color: lightgreen;
+    }
+    .wrong {
+      color: red;
+    }
+    .scoreboard, .leaderboard {
+      background-color: #1e1e1e;
+      padding: 10px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+    .progress {
+      background: #333;
       border-radius: 10px;
+      overflow: hidden;
+      height: 20px;
     }
-    .hidden {
-      display: none;
+    .progress-bar {
+      background: #00bcd4;
+      height: 100%;
+      width: 0%;
     }
-    .btn {
-      padding: 0.5em 1em;
+    button {
+      background-color: #00bcd4;
+      color: #fff;
       border: none;
-      background: #03a9f4;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
+      padding: 10px 20px;
       border-radius: 5px;
-    }
-    .btn:hover {
-      background: #0288d1;
-    }
-    .yt-link {
-      margin-top: 1em;
-      display: block;
-      color: #00bcd4;
-      font-weight: bold;
-    }
-    .score-board {
-      font-weight: bold;
-      margin-top: 1em;
-      color: #76ff03;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Welcome to Amit Sir's Python Course</h1>
-    <p><strong>Python Made Easy with Amit Sir</strong></p>
-  </header>
-
-  <div class="container">
-    <section class="module" id="module1">
-      <h2>Module 1: Introduction to Python</h2>
-      <p>Welcome to Python! In this module, you'll learn the basics: how Python works, syntax, variables, input/output, and comments.</p>
-
-      <div class="quiz">
-        <h3>Quiz: Module 1</h3>
-        <form id="quizForm">
-          <p>1. What is the correct file extension for Python files?</p>
-          <label><input type="radio" name="q1" value="a"> .pt</label><br>
-          <label><input type="radio" name="q1" value="b"> .pyt</label><br>
-          <label><input type="radio" name="q1" value="c"> .py</label><br>
-
-          <p>2. Which keyword is used for function declaration in Python?</p>
-          <label><input type="radio" name="q2" value="a"> function</label><br>
-          <label><input type="radio" name="q2" value="b"> def</label><br>
-          <label><input type="radio" name="q2" value="c"> fun</label><br>
-
-          <p>3. What does the print() function do?</p>
-          <label><input type="radio" name="q3" value="a"> Reads input</label><br>
-          <label><input type="radio" name="q3" value="b"> Outputs text</label><br>
-          <label><input type="radio" name="q3" value="c"> Declares a variable</label><br>
-
-          <button type="button" class="btn" onclick="submitQuiz()">Submit</button>
-        </form>
-        <div id="quizResult" class="score-board hidden"></div>
+    <p>Python Made Easy with Amit Sir</p>
+  </header>  <div class="container">
+    <div class="scoreboard">
+      <h3>Your Score: <span id="score">0</span></h3>
+      <div class="progress">
+        <div id="progress-bar" class="progress-bar"></div>
       </div>
+    </div><div class="leaderboard">
+  <h3>Leaderboard</h3>
+  <ol id="leaderboard">
+    <li>Amit - 100</li>
+    <li>Student A - 80</li>
+    <li>Student B - 60</li>
+  </ol>
+</div>
 
-      <a href="https://www.youtube.com/watch?v=_uQrJ0TkZlc" target="_blank" class="yt-link">
-        Watch: Python Crash Course on YouTube
-      </a>
-    </section>
+<div class="module">
+  <h2>Module 3: Data Types and Variables</h2>
+  <p>This module introduces Python variables and common data types such as int, float, string, list, tuple, dictionary, and boolean.</p>
+  <p>Examples:</p>
+  <pre>
+
+name = "Amit" age = 30 is_student = True fruits = ["apple", "banana", "cherry"] </pre> <p>Watch: <a href="https://www.youtube.com/watch?v=ohCDWZgNIU0" target="_blank">Python Variables & Data Types</a></p>
+
+<div class="quiz">
+    <h4>Quiz:</h4>
+    <p>1. Which data type is used to store multiple values in one variable?</p>
+    <input type="radio" name="q3_1">int<br>
+    <input type="radio" name="q3_1">list<br>
+    <input type="radio" name="q3_1">bool<br>
+
+    <p>2. What is the correct syntax to create a dictionary?</p>
+    <input type="radio" name="q3_2">my_dict = ("key": "value")<br>
+    <input type="radio" name="q3_2">my_dict = ["key": "value"]<br>
+    <input type="radio" name="q3_2">my_dict = {"key": "value"}<br>
+
+    <p>3. What is the output of type("Hello")?</p>
+    <input type="radio" name="q3_3">str<br>
+    <input type="radio" name="q3_3">string<br>
+    <input type="radio" name="q3_3">text<br>
+
+    <p>4. Which of the following is a valid variable name?</p>
+    <input type="radio" name="q3_4">1name<br>
+    <input type="radio" name="q3_4">_name<br>
+    <input type="radio" name="q3_4">name-1<br>
+
+    <p>5. Which type is used to represent True/False values?</p>
+    <input type="radio" name="q3_5">bool<br>
+    <input type="radio" name="q3_5">str<br>
+    <input type="radio" name="q3_5">int<br>
   </div>
+</div>
 
-  <footer>
+<!-- Add more modules 4 to 10 similarly here -->
+
+  </div>  <footer>
     <p>&copy; 2025 Python with Amit Sir</p>
-  </footer>
+  </footer>  <script>
+    let score = 0;
 
-  <script>
-    function submitQuiz() {
-      const answers = {
-        q1: 'c',
-        q2: 'b',
-        q3: 'b'
-      };
-      let score = 0;
-      const form = document.getElementById('quizForm');
-      const result = document.getElementById('quizResult');
-      const formData = new FormData(form);
-
-      for (let [key, value] of Object.entries(answers)) {
-        if (formData.get(key) === value) {
-          score++;
-        }
-      }
-
-      result.textContent = `Your Score: ${score}/3`;
-      result.classList.remove('hidden');
-
-      if (score >= 2) {
-        result.textContent += ' - Great! You unlocked Module 2.';
-        // Optional: Add logic here to enable next module
-      } else {
-        result.textContent += ' - Try again to unlock the next module.';
-      }
+    function updateProgress() {
+      document.getElementById("score").innerText = score;
+      document.getElementById("progress-bar").style.width = (score / 150) * 100 + "%";
     }
-  </script>
-</body>
+
+    // Add your quiz evaluation logic here
+    // This should check selected answers and increase score accordingly
+
+    updateProgress();
+  </script></body>
 </html>
