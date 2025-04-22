@@ -1,142 +1,287 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python with Amit Sir</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #121212;
-      color: #fff;
-    }
-    header, footer {
-      background-color: #1f1f1f;
-      padding: 20px;
-      text-align: center;
-    }
-    h1, h2 {
-      color: #00bcd4;
-    }
-    .container {
-      padding: 20px;
-    }
-    .module {
-      background-color: #2a2a2a;
-      margin: 20px 0;
-      padding: 20px;
-      border-radius: 10px;
-    }
-    .quiz {
-      margin-top: 15px;
-    }
-    .quiz input[type="radio"] {
-      margin-right: 10px;
-    }
-    .correct {
-      color: lightgreen;
-    }
-    .wrong {
-      color: red;
-    }
-    .scoreboard, .leaderboard {
-      background-color: #1e1e1e;
-      padding: 10px;
-      border-radius: 8px;
-      margin: 10px 0;
-    }
-    .progress {
-      background: #333;
-      border-radius: 10px;
-      overflow: hidden;
-      height: 20px;
-    }
-    .progress-bar {
-      background: #00bcd4;
-      height: 100%;
-      width: 0%;
-    }
-    button {
-      background-color: #00bcd4;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Python - Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            width: 250px;
+            height: 100%;
+        }
+
+        .logo {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #3498db;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 15px 0;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-links li:hover {
+            background: #34495e;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            padding: 30px;
+            background: white;
+            margin-left: 250px;
+        }
+
+        .chapter {
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .quiz-container {
+            display: none;
+        }
+
+        .question {
+            margin: 20px 0;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+        }
+
+        .option {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .correct { background: #d4edda !important; }
+        .wrong { background: #f8d7da !important; }
+
+        button {
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+            margin-left: 250px;
+        }
+
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Welcome to Amit Sir's Python Course</h1>
-    <p>Python Made Easy with Amit Sir</p>
-  </header>  <div class="container">
-    <div class="scoreboard">
-      <h3>Your Score: <span id="score">0</span></h3>
-      <div class="progress">
-        <div id="progress-bar" class="progress-bar"></div>
-      </div>
-    </div><div class="leaderboard">
-  <h3>Leaderboard</h3>
-  <ol id="leaderboard">
-    <li>Amit - 100</li>
-    <li>Student A - 80</li>
-    <li>Student B - 60</li>
-  </ol>
-</div>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">Learn Python</div>
+            <ul class="nav-links">
+                <li onclick="showContent('intro')">Introduction</li>
+                <li onclick="showContent('basics')">Python Basics</li>
+                <li onclick="showContent('control')">Control Structures</li>
+                <li onclick="showContent('functions')">Functions</li>
+                <li onclick="showContent('quiz')">Quiz</li>
+                <li onclick="showContent('about')">About</li>
+            </ul>
+        </nav>
 
-<div class="module">
-  <h2>Module 3: Data Types and Variables</h2>
-  <p>This module introduces Python variables and common data types such as int, float, string, list, tuple, dictionary, and boolean.</p>
-  <p>Examples:</p>
-  <pre>
+        <main class="main-content" id="content">
+            <!-- Content will be loaded here dynamically -->
+        </main>
+    </div>
 
-name = "Amit" age = 30 is_student = True fruits = ["apple", "banana", "cherry"] </pre> <p>Watch: <a href="https://www.youtube.com/watch?v=ohCDWZgNIU0" target="_blank">Python Variables & Data Types</a></p>
+    <footer>
+        Developed by Amit Saha • © 2023 Learn Python
+    </footer>
 
-<div class="quiz">
-    <h4>Quiz:</h4>
-    <p>1. Which data type is used to store multiple values in one variable?</p>
-    <input type="radio" name="q3_1">int<br>
-    <input type="radio" name="q3_1">list<br>
-    <input type="radio" name="q3_1">bool<br>
+    <script>
+        const courseContent = {
+            intro: `
+                <div class="chapter">
+                    <h1>Introduction to Python</h1>
+                    <p>Python is a high-level, interpreted programming language...</p>
+                    <h3>Why Learn Python?</h3>
+                    <ul>
+                        <li>Easy to learn syntax</li>
+                        <li>Versatile applications</li>
+                        <li>Large community support</li>
+                    </ul>
+                    <pre><code>print("Hello, World!")</code></pre>
+                </div>
+            `,
+            basics: `
+                <div class="chapter">
+                    <h1>Python Basics</h1>
+                    <h3>Variables</h3>
+                    <pre><code>x = 5
+y = "Hello"</code></pre>
+                    
+                    <h3>Data Types</h3>
+                    <ul>
+                        <li>Integers: 5</li>
+                        <li>Strings: "Python"</li>
+                        <li>Lists: [1, 2, 3]</li>
+                    </ul>
+                </div>
+            `,
+            control: `
+                <div class="chapter">
+                    <h1>Control Structures</h1>
+                    <h3>If-Else</h3>
+                    <pre><code>if x > 0:
+    print("Positive")
+else:
+    print("Negative")</code></pre>
+                    
+                    <h3>Loops</h3>
+                    <pre><code>for i in range(5):
+    print(i)</code></pre>
+                </div>
+            `,
+            functions: `
+                <div class="chapter">
+                    <h1>Functions</h1>
+                    <pre><code>def greet(name):
+    print(f"Hello {name}")</code></pre>
+                    
+                    <h3>Parameters & Arguments</h3>
+                    <p>Functions can take inputs and return values...</p>
+                </div>
+            `,
+            quiz: `
+                <div class="quiz-container">
+                    <h1>Python Quiz</h1>
+                    <div id="progress">Question 1 of 3</div>
+                    
+                    <div class="question" id="question1">
+                        <p>What is the output of print(2**3)?</p>
+                        <div class="option" onclick="checkAnswer(1, 8)">8</div>
+                        <div class="option" onclick="checkAnswer(1, 6)">6</div>
+                    </div>
 
-    <p>2. What is the correct syntax to create a dictionary?</p>
-    <input type="radio" name="q3_2">my_dict = ("key": "value")<br>
-    <input type="radio" name="q3_2">my_dict = ["key": "value"]<br>
-    <input type="radio" name="q3_2">my_dict = {"key": "value"}<br>
+                    <div class="question" id="question2">
+                        <p>Which keyword defines a function?</p>
+                        <div class="option" onclick="checkAnswer(2, 'def')">def</div>
+                        <div class="option" onclick="checkAnswer(2, 'function')">function</div>
+                    </div>
 
-    <p>3. What is the output of type("Hello")?</p>
-    <input type="radio" name="q3_3">str<br>
-    <input type="radio" name="q3_3">string<br>
-    <input type="radio" name="q3_3">text<br>
+                    <div class="question" id="question3">
+                        <p>How do you create a list?</p>
+                        <div class="option" onclick="checkAnswer(3, '[]')">[]</div>
+                        <div class="option" onclick="checkAnswer(3, '{}')">{}</div>
+                    </div>
 
-    <p>4. Which of the following is a valid variable name?</p>
-    <input type="radio" name="q3_4">1name<br>
-    <input type="radio" name="q3_4">_name<br>
-    <input type="radio" name="q3_4">name-1<br>
+                    <button onclick="nextQuestion()">Next Question</button>
+                </div>
+            `,
+            about: `
+                <div class="chapter">
+                    <h1>About This Course</h1>
+                    <p>Comprehensive Python programming course covering:</p>
+                    <ul>
+                        <li>Basic syntax</li>
+                        <li>Control structures</li>
+                        <li>Functions</li>
+                        <li>File handling</li>
+                    </ul>
+                    <h3>Developer: Amit Saha</h3>
+                    <p>Experienced Python developer and educator</p>
+                </div>
+            `
+        };
 
-    <p>5. Which type is used to represent True/False values?</p>
-    <input type="radio" name="q3_5">bool<br>
-    <input type="radio" name="q3_5">str<br>
-    <input type="radio" name="q3_5">int<br>
-  </div>
-</div>
+        let currentQuestion = 1;
+        let score = 0;
 
-<!-- Add more modules 4 to 10 similarly here -->
+        function showContent(section) {
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = courseContent[section];
+            if(section === 'quiz') {
+                document.querySelector('.quiz-container').style.display = 'block';
+                showQuestion(currentQuestion);
+            }
+        }
 
-  </div>  <footer>
-    <p>&copy; 2025 Python with Amit Sir</p>
-  </footer>  <script>
-    let score = 0;
+        function showQuestion(num) {
+            document.querySelectorAll('.question').forEach(q => q.style.display = 'none');
+            document.querySelector(`#question${num}`).style.display = 'block';
+            document.getElementById('progress').textContent = `Question ${num} of 3`;
+        }
 
-    function updateProgress() {
-      document.getElementById("score").innerText = score;
-      document.getElementById("progress-bar").style.width = (score / 150) * 100 + "%";
-    }
+        function checkAnswer(qNum, answer) {
+            const correctAnswers = {
+                1: 8,
+                2: 'def',
+                3: '[]'
+            };
 
-    // Add your quiz evaluation logic here
-    // This should check selected answers and increase score accordingly
+            const options = document.querySelectorAll(`#question${qNum} .option`);
+            options.forEach(opt => {
+                if(opt.textContent == correctAnswers[qNum]) {
+                    opt.classList.add('correct');
+                } else {
+                    opt.classList.add('wrong');
+                }
+            });
+        }
 
-    updateProgress();
-  </script></body>
+        function nextQuestion() {
+            if(currentQuestion < 3) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            } else {
+                alert(`Quiz Complete! Score: ${score}/3`);
+                currentQuestion = 1;
+                showQuestion(currentQuestion);
+            }
+        }
+
+        // Show initial content
+        showContent('intro');
+    </script>
+</body>
 </html>
