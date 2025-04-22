@@ -2,153 +2,128 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python with Amit Sir - Course Dashboard</title>
+  <title>Python with Amit Sir - Dashboard</title>
   <style>
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
-      background: #121212;
+      background-color: #121212;
       color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: background 0.3s ease, color 0.3s ease;
     }
-    header {
+    header, footer {
+      text-align: center;
+      padding: 1em;
       background: #1e1e1e;
-      padding: 1rem;
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-      animation: fadeInDown 1s ease;
     }
-    #welcome {
-      background: #2b2b2b;
-      padding: 1.5rem;
-      text-align: center;
-      font-size: 1.2rem;
-      border-bottom: 2px solid #00e676;
-      animation: fadeInDown 1.2s ease;
-    }
-    main {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1rem;
-      padding: 1rem;
-      animation: fadeIn 1.5s ease;
+    .container {
+      padding: 1em;
     }
     .module {
-      background: #242424;
-      border-radius: 1rem;
-      padding: 1rem;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s;
+      border: 1px solid #333;
+      border-radius: 10px;
+      margin: 1em 0;
+      padding: 1em;
+      background: #1f1f1f;
     }
-    .module:hover {
-      transform: scale(1.03);
+    .quiz {
+      margin-top: 1em;
+      background: #222;
+      padding: 1em;
+      border-radius: 10px;
     }
-    h2 {
-      color: #00e676;
-      font-size: 1.2rem;
+    .hidden {
+      display: none;
     }
-    p {
-      font-size: 0.95rem;
-    }
-    .youtube-link {
-      color: #82b1ff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .start-btn {
-      background: #00e676;
-      color: #000;
-      padding: 0.5rem 1rem;
+    .btn {
+      padding: 0.5em 1em;
       border: none;
-      border-radius: 0.5rem;
-      margin-top: 0.5rem;
+      background: #03a9f4;
+      color: white;
+      font-weight: bold;
       cursor: pointer;
+      border-radius: 5px;
+    }
+    .btn:hover {
+      background: #0288d1;
+    }
+    .yt-link {
+      margin-top: 1em;
+      display: block;
+      color: #00bcd4;
       font-weight: bold;
     }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .score-board {
+      font-weight: bold;
+      margin-top: 1em;
+      color: #76ff03;
     }
   </style>
 </head>
 <body>
-  <header>Python with Amit Sir - Learning Dashboard</header>
-  <div id="welcome">Welcome to Amit Sir's Python Course — Python Made Easy with Amit Sir</div>
-  <main id="dashboard">
-    <!-- Modules will be injected here -->
-  </main>  <script>
-    const modules = [
-      {
-        title: "Module 1: Introduction to Python",
-        description: "Learn what Python is, why it is popular, and how to install Python on your system.",
-        youtube: "https://www.youtube.com/watch?v=rfscVS0vtbw"
-      },
-      {
-        title: "Module 2: Variables and Data Types",
-        description: "Understand variables, strings, numbers, lists, tuples, dictionaries, and more.",
-        youtube: "https://www.youtube.com/watch?v=ohCDWZgNIU0"
-      },
-      {
-        title: "Module 3: Operators and Expressions",
-        description: "Explore arithmetic, relational, logical, assignment, and bitwise operators.",
-        youtube: "https://www.youtube.com/watch?v=VchuKL44s6E"
-      },
-      {
-        title: "Module 4: Control Flow",
-        description: "Master if statements, loops (while, for), and control keywords like break and continue.",
-        youtube: "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
-      },
-      {
-        title: "Module 5: Functions",
-        description: "Define and call functions, return values, and understand scope and arguments.",
-        youtube: "https://www.youtube.com/watch?v=NSbOtYzIQI0"
-      },
-      {
-        title: "Module 6: Modules and Packages",
-        description: "Learn how to use Python’s built-in modules and create your own packages.",
-        youtube: "https://www.youtube.com/watch?v=CqvZ3vGoGs0"
-      },
-      {
-        title: "Module 7: File Handling",
-        description: "Open, read, write, and close files in Python. Learn about file modes and operations.",
-        youtube: "https://www.youtube.com/watch?v=Uh2ebFW8OYM"
-      },
-      {
-        title: "Module 8: Object-Oriented Programming",
-        description: "Understand classes, objects, inheritance, and encapsulation in Python.",
-        youtube: "https://www.youtube.com/watch?v=JeznW_7DlB0"
-      },
-      {
-        title: "Module 9: Exception Handling",
-        description: "Catch and handle exceptions gracefully using try, except, finally, and raise.",
-        youtube: "https://www.youtube.com/watch?v=NIWwJbo-9_8"
-      },
-      {
-        title: "Module 10: Practice Project",
-        description: "Build a mini project using the skills you've learned throughout the course.",
-        youtube: "https://www.youtube.com/watch?v=XGf2GcyHPhc"
+  <header>
+    <h1>Welcome to Amit Sir's Python Course</h1>
+    <p><strong>Python Made Easy with Amit Sir</strong></p>
+  </header>
+  <div class="container">
+    <section class="module" id="module1">
+      <h2>Module 1: Introduction to Python</h2>
+      <p>Welcome to Python! Learn about Python syntax, variables, and basic input/output operations.</p><div class="quiz">
+    <h3>Quiz: Module 1</h3>
+    <form id="quizForm">
+      <p>1. What is the correct file extension for Python files?</p>
+      <label><input type="radio" name="q1" value="a"> .pt</label><br>
+      <label><input type="radio" name="q1" value="b"> .pyt</label><br>
+      <label><input type="radio" name="q1" value="c"> .py</label><br>
+
+      <p>2. Which keyword is used for function declaration in Python?</p>
+      <label><input type="radio" name="q2" value="a"> function</label><br>
+      <label><input type="radio" name="q2" value="b"> def</label><br>
+      <label><input type="radio" name="q2" value="c"> fun</label><br>
+
+      <p>3. What does the print() function do?</p>
+      <label><input type="radio" name="q3" value="a"> Reads input</label><br>
+      <label><input type="radio" name="q3" value="b"> Outputs text</label><br>
+      <label><input type="radio" name="q3" value="c"> Declares a variable</label><br>
+
+      <button type="button" class="btn" onclick="submitQuiz()">Submit</button>
+    </form>
+    <div id="quizResult" class="score-board hidden"></div>
+  </div>
+
+  <a href="https://www.youtube.com/watch?v=_uQrJ0TkZlc" target="_blank" class="yt-link">Watch: Python Crash Course on YouTube</a>
+</section>
+
+  </div>  <script>
+    function submitQuiz() {
+      const answers = {
+        q1: 'c',
+        q2: 'b',
+        q3: 'b'
+      };
+      let score = 0;
+      const form = document.getElementById('quizForm');
+      const result = document.getElementById('quizResult');
+      const formData = new FormData(form);
+
+      for (let [key, value] of Object.entries(answers)) {
+        if (formData.get(key) === value) {
+          score++;
+        }
       }
-    ];
 
-    const dashboard = document.getElementById("dashboard");
-    modules.forEach((mod, index) => {
-      const card = document.createElement("div");
-      card.className = "module";
-      card.innerHTML = `
-        <h2>${mod.title}</h2>
-        <p>${mod.description}</p>
-        <a class="youtube-link" href="${mod.youtube}" target="_blank">Watch Tutorial</a><br />
-        <button class="start-btn" onclick="startModule(${index})">Start Lesson</button>
-      `;
-      dashboard.appendChild(card);
-    });
+      result.textContent = `Your Score: ${score}/3`;
+      result.classList.remove('hidden');
 
-    function startModule(index) {
-      alert("Interactive lesson and quiz for " + modules[index].title + " coming soon!");
+      if (score >= 2) {
+        result.textContent += ' - Great! You unlocked Module 2.';
+        // Here you would unlock Module 2 dynamically
+      } else {
+        result.textContent += ' - Try again to unlock the next module.';
+      }
     }
-  </script></body>
+  </script>  <footer>
+    <p>&copy; 2025 Python with Amit Sir</p>
+  </footer>
+</body>
 </html>
