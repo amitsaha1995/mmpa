@@ -1,0 +1,150 @@
+<!-- Replace your current index.html content with this -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Python with Amit Sir - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+
+  <!-- Styles -->
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 30px 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      width: 320px;
+      text-align: center;
+    }
+
+    .container h1 {
+      margin-bottom: 20px;
+      font-size: 1.5em;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    button {
+      width: 48%;
+      padding: 10px;
+      margin: 10px 1%;
+      border: none;
+      border-radius: 8px;
+      background-color: #ffc107;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff9800;
+    }
+
+    #status {
+      margin-top: 10px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Python with Amit Sir</h1>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <div>
+      <button onclick="login()">Login</button>
+      <button onclick="signup()">Signup</button>
+    </div>
+    <p id="status"></p>
+  </div>
+
+  <!-- Firebase Config -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAXxYcdGweReSOsNKXFdeNW5W4pzL7zLdQ",
+      authDomain: "loginpage-308d4.firebaseapp.com",
+      projectId: "loginpage-308d4",
+      storageBucket: "loginpage-308d4.appspot.com",
+      messagingSenderId: "697843903577",
+      appId: "1:697843903577:web:625aa6e1add8bed03a5548"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <!-- Firebase Auth Logic -->
+  <script>
+    function $(id) {
+      return document.getElementById(id);
+    }
+
+    function showStatus(message, color = 'lightgreen') {
+      const status = $("status");
+      status.textContent = message;
+      status.style.color = color;
+    }
+
+    function signup() {
+      const email = $("email").value;
+      const password = $("password").value;
+
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          showStatus("Signup successful 🎉");
+        })
+        .catch((error) => {
+          showStatus("Signup error: " + error.message, "pink");
+        });
+    }
+
+    function login() {
+      const email = $("email").value;
+      const password = $("password").value;
+
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          showStatus("Login successful ✅");
+          setTimeout(() => {
+            window.location.href = "dashboard.html";
+          }, 1000);
+        })
+        .catch((error) => {
+          showStatus("Login error: " + error.message, "pink");
+        });
+    }
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        console.log("User logged in:", user.email);
+      } else {
+        console.log("User logged out");
+      }
+    });
+  </script>
+</body>
+</html>

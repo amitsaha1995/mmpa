@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mathabhanga Modern Public Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to right, #a8edea, #fed6e3);
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #2e86de;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      font-size: 28px;
+    }
+
+    header p {
+      font-size: 16px;
+    }
+
+    nav {
+      background: #ffffff;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #2e86de;
+      margin: 0 20px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #f39c12;
+    }
+
+    .dashboard {
+      padding: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease, background 0.3s ease;
+      animation: fadeIn 0.7s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: #f0faff;
+    }
+
+    .card h2 {
+      font-size: 22px;
+      color: #2e86de;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer {
+      background-color: #2e86de;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 22px; }
+      nav { flex-direction: column; }
+      nav a { margin: 10px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Mathabhanga Modern Public Academy</h1>
+    <p>Located in Mathabhanga, Coochbehar | Inspiring the Future</p>
+  </header>
+
+  <nav>
+    <a href="#">Dashboard</a>
+    <a href="#">Students</a>
+    <a href="#">Teachers</a>
+    <a href="#">Attendance</a>
+    <a href="#">Notices</a>
+  </nav>
+
+  <div class="dashboard">
+    <div class="card">
+      <h2>📚 Students</h2>
+      <p>Manage student data, attendance, and profiles.</p>
+    </div>
+    <div class="card">
+      <h2>👨‍🏫 Teachers</h2>
+      <p>View and assign teacher responsibilities.</p>
+    </div>
+    <div class="card">
+      <h2>📆 Timetable</h2>
+      <p>Review or update class schedules and sessions.</p>
+    </div>
+    <div class="card">
+      <h2>📢 Notices</h2>
+      <p>Post or review important school announcements.</p>
+    </div>
+    <div class="card">
+      <h2>📈 Reports</h2>
+      <p>Generate academic and activity reports.</p>
+    </div>
+    <div class="card">
+      <h2>📥 Admissions</h2>
+      <p>Track new applications and admission status.</p>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Mathabhanga Modern Public Academy. All rights reserved.
+  </footer>
+
+</body>
+</html>
