@@ -1,287 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Python - Dashboard</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background: #f0f2f5;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            min-height: 100vh;
-        }
-
-        /* Sidebar Styles */
-        .sidebar {
-            background: #2c3e50;
-            color: white;
-            padding: 20px;
-            position: fixed;
-            width: 250px;
-            height: 100%;
-        }
-
-        .logo {
-            font-size: 24px;
-            margin-bottom: 30px;
-            color: #3498db;
-        }
-
-        .nav-links {
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin: 15px 0;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-
-        .nav-links li:hover {
-            background: #34495e;
-        }
-
-        /* Main Content Styles */
-        .main-content {
-            padding: 30px;
-            background: white;
-            margin-left: 250px;
-        }
-
-        .chapter {
-            margin-bottom: 40px;
-            padding: 20px;
-            border-radius: 8px;
-            background: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .quiz-container {
-            display: none;
-        }
-
-        .question {
-            margin: 20px 0;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-        }
-
-        .option {
-            margin: 10px 0;
-            padding: 10px;
-            background: #f8f9fa;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .correct { background: #d4edda !important; }
-        .wrong { background: #f8d7da !important; }
-
-        button {
-            padding: 10px 20px;
-            background: #3498db;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #2c3e50;
-            color: white;
-            margin-left: 250px;
-        }
-
-        pre {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python with Amit Sir - Course Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f7fa; margin: 0; padding: 20px; }
+    h1, h2 { color: #2d3748; }
+    .module { background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .video, .quiz, .practice { margin-top: 10px; }
+    iframe { width: 100%; height: 315px; border: none; border-radius: 10px; }
+    .quiz-question { margin: 10px 0; }
+    button { margin-top: 5px; padding: 6px 12px; border: none; border-radius: 5px; background: #2b6cb0; color: white; cursor: pointer; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <nav class="sidebar">
-            <div class="logo">Learn Python</div>
-            <ul class="nav-links">
-                <li onclick="showContent('intro')">Introduction</li>
-                <li onclick="showContent('basics')">Python Basics</li>
-                <li onclick="showContent('control')">Control Structures</li>
-                <li onclick="showContent('functions')">Functions</li>
-                <li onclick="showContent('quiz')">Quiz</li>
-                <li onclick="showContent('about')">About</li>
-            </ul>
-        </nav>
+  <h1>Python with Amit Sir - Complete Python Course</h1>
+  <p>Learn Python from basics to advanced in 10 interactive modules with videos, quizzes, and practice exercises.</p>  <div id="dashboard"></div>  <script>
+    const modules = [
+      {
+        title: "Module 1: Introduction to Python",
+        video: "https://www.youtube.com/embed/_uQrJ0TkZlc",
+        quiz: [
+          { q: "What is Python?", a: "A programming language" },
+          { q: "Who created Python?", a: "Guido van Rossum" },
+          { q: "Is Python statically typed?", a: "No" },
+        ]
+      },
+      {
+        title: "Module 2: Variables and Data Types",
+        video: "https://www.youtube.com/embed/kqtD5dpn9C8",
+        quiz: [
+          { q: "Which is a valid variable name?", a: "my_var" },
+          { q: "What data type is 3.14?", a: "float" },
+          { q: "What does 'type()' do?", a: "Returns data type" },
+        ]
+      },
+      {
+        title: "Module 3: Conditional Statements",
+        video: "https://www.youtube.com/embed/f4KOjWS_KZs",
+        quiz: [
+          { q: "Which keyword is used for condition?", a: "if" },
+          { q: "What does 'elif' mean?", a: "else if" },
+          { q: "What is the output of if True: print(1)?", a: "1" },
+        ]
+      },
+      {
+        title: "Module 4: Loops",
+        video: "https://www.youtube.com/embed/6iF8Xb7Z3wQ",
+        quiz: [
+          { q: "Which loop runs until false?", a: "while" },
+          { q: "What does 'break' do?", a: "Exits loop" },
+          { q: "What does 'continue' do?", a: "Skips to next iteration" },
+        ]
+      },
+      {
+        title: "Module 5: Functions",
+        video: "https://www.youtube.com/embed/NSbOtYzIQI0",
+        quiz: [
+          { q: "How to define a function?", a: "def" },
+          { q: "What is return used for?", a: "Return value" },
+          { q: "Can functions be nested?", a: "Yes" },
+        ]
+      },
+      {
+        title: "Module 6: Lists and Tuples",
+        video: "https://www.youtube.com/embed/W8KRzm-HUcc",
+        quiz: [
+          { q: "Are lists mutable?", a: "Yes" },
+          { q: "Tuple syntax?", a: "(1, 2, 3)" },
+          { q: "List method to add?", a: "append()" },
+        ]
+      },
+      {
+        title: "Module 7: Dictionaries",
+        video: "https://www.youtube.com/embed/daefaLgNkw0",
+        quiz: [
+          { q: "How to access dict value?", a: "dict[key]" },
+          { q: "Method to get keys?", a: "keys()" },
+          { q: "Are keys unique?", a: "Yes" },
+        ]
+      },
+      {
+        title: "Module 8: File Handling",
+        video: "https://www.youtube.com/embed/Uh2ebFW8OYM",
+        quiz: [
+          { q: "How to open a file?", a: "open()" },
+          { q: "Which mode for writing?", a: "'w'" },
+          { q: "What does read() do?", a: "Reads content" },
+        ]
+      },
+      {
+        title: "Module 9: Object-Oriented Programming",
+        video: "https://www.youtube.com/embed/JeznW_7DlB0",
+        quiz: [
+          { q: "Keyword to define class?", a: "class" },
+          { q: "What is self?", a: "Instance reference" },
+          { q: "Can Python use inheritance?", a: "Yes" },
+        ]
+      },
+      {
+        title: "Module 10: Final Project + Summary",
+        video: "https://www.youtube.com/embed/DX9Zy0OpV3c",
+        quiz: [
+          { q: "Did you complete all modules?", a: "Yes" },
+          { q: "Did you practice coding?", a: "Yes" },
+          { q: "Are you confident in Python?", a: "Yes" },
+        ]
+      }
+    ];
 
-        <main class="main-content" id="content">
-            <!-- Content will be loaded here dynamically -->
-        </main>
-    </div>
+    const dashboard = document.getElementById("dashboard");
 
-    <footer>
-        Developed by Amit Saha • © 2023 Learn Python
-    </footer>
+    modules.forEach((mod, index) => {
+      const modDiv = document.createElement("div");
+      modDiv.className = "module";
 
-    <script>
-        const courseContent = {
-            intro: `
-                <div class="chapter">
-                    <h1>Introduction to Python</h1>
-                    <p>Python is a high-level, interpreted programming language...</p>
-                    <h3>Why Learn Python?</h3>
-                    <ul>
-                        <li>Easy to learn syntax</li>
-                        <li>Versatile applications</li>
-                        <li>Large community support</li>
-                    </ul>
-                    <pre><code>print("Hello, World!")</code></pre>
-                </div>
-            `,
-            basics: `
-                <div class="chapter">
-                    <h1>Python Basics</h1>
-                    <h3>Variables</h3>
-                    <pre><code>x = 5
-y = "Hello"</code></pre>
-                    
-                    <h3>Data Types</h3>
-                    <ul>
-                        <li>Integers: 5</li>
-                        <li>Strings: "Python"</li>
-                        <li>Lists: [1, 2, 3]</li>
-                    </ul>
-                </div>
-            `,
-            control: `
-                <div class="chapter">
-                    <h1>Control Structures</h1>
-                    <h3>If-Else</h3>
-                    <pre><code>if x > 0:
-    print("Positive")
-else:
-    print("Negative")</code></pre>
-                    
-                    <h3>Loops</h3>
-                    <pre><code>for i in range(5):
-    print(i)</code></pre>
-                </div>
-            `,
-            functions: `
-                <div class="chapter">
-                    <h1>Functions</h1>
-                    <pre><code>def greet(name):
-    print(f"Hello {name}")</code></pre>
-                    
-                    <h3>Parameters & Arguments</h3>
-                    <p>Functions can take inputs and return values...</p>
-                </div>
-            `,
-            quiz: `
-                <div class="quiz-container">
-                    <h1>Python Quiz</h1>
-                    <div id="progress">Question 1 of 3</div>
-                    
-                    <div class="question" id="question1">
-                        <p>What is the output of print(2**3)?</p>
-                        <div class="option" onclick="checkAnswer(1, 8)">8</div>
-                        <div class="option" onclick="checkAnswer(1, 6)">6</div>
-                    </div>
+      modDiv.innerHTML = `
+        <h2>${mod.title}</h2>
+        <div class="video"><iframe src="${mod.video}" allowfullscreen></iframe></div>
+        <div class="quiz">
+          <h3>Quiz</h3>
+          ${mod.quiz.map(q => `<div class="quiz-question">Q: ${q.q}<br><button onclick="alert('Answer: ${q.a}')">Show Answer</button></div>`).join('')}
+        </div>
+      `;
 
-                    <div class="question" id="question2">
-                        <p>Which keyword defines a function?</p>
-                        <div class="option" onclick="checkAnswer(2, 'def')">def</div>
-                        <div class="option" onclick="checkAnswer(2, 'function')">function</div>
-                    </div>
-
-                    <div class="question" id="question3">
-                        <p>How do you create a list?</p>
-                        <div class="option" onclick="checkAnswer(3, '[]')">[]</div>
-                        <div class="option" onclick="checkAnswer(3, '{}')">{}</div>
-                    </div>
-
-                    <button onclick="nextQuestion()">Next Question</button>
-                </div>
-            `,
-            about: `
-                <div class="chapter">
-                    <h1>About This Course</h1>
-                    <p>Comprehensive Python programming course covering:</p>
-                    <ul>
-                        <li>Basic syntax</li>
-                        <li>Control structures</li>
-                        <li>Functions</li>
-                        <li>File handling</li>
-                    </ul>
-                    <h3>Developer: Amit Saha</h3>
-                    <p>Experienced Python developer and educator</p>
-                </div>
-            `
-        };
-
-        let currentQuestion = 1;
-        let score = 0;
-
-        function showContent(section) {
-            const contentDiv = document.getElementById('content');
-            contentDiv.innerHTML = courseContent[section];
-            if(section === 'quiz') {
-                document.querySelector('.quiz-container').style.display = 'block';
-                showQuestion(currentQuestion);
-            }
-        }
-
-        function showQuestion(num) {
-            document.querySelectorAll('.question').forEach(q => q.style.display = 'none');
-            document.querySelector(`#question${num}`).style.display = 'block';
-            document.getElementById('progress').textContent = `Question ${num} of 3`;
-        }
-
-        function checkAnswer(qNum, answer) {
-            const correctAnswers = {
-                1: 8,
-                2: 'def',
-                3: '[]'
-            };
-
-            const options = document.querySelectorAll(`#question${qNum} .option`);
-            options.forEach(opt => {
-                if(opt.textContent == correctAnswers[qNum]) {
-                    opt.classList.add('correct');
-                } else {
-                    opt.classList.add('wrong');
-                }
-            });
-        }
-
-        function nextQuestion() {
-            if(currentQuestion < 3) {
-                currentQuestion++;
-                showQuestion(currentQuestion);
-            } else {
-                alert(`Quiz Complete! Score: ${score}/3`);
-                currentQuestion = 1;
-                showQuestion(currentQuestion);
-            }
-        }
-
-        // Show initial content
-        showContent('intro');
-    </script>
-</body>
+      dashboard.appendChild(modDiv);
+    });
+  </script></body>
 </html>
