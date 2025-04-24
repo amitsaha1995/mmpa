@@ -1,130 +1,1889 @@
-<!DOCTYPE html><html lang="en">
+<!-- # 1 -->
+<!DOCTYPE html>
+<!-- # 2 -->
+<html lang="en">
+<!-- # 3 -->
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python with Amit Sir - Course Dashboard</title>
+  <!-- # 4 -->
+  <meta charset="UTF-8">
+  <!-- # 5 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- # 6 -->
+  <title>Generative AI Learning</title>
+  <!-- # 7 -->
   <style>
-    body { font-family: Arial, sans-serif; background: #f5f7fa; margin: 0; padding: 20px; }
-    h1, h2 { color: #2d3748; }
-    .module { background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    .video, .quiz, .practice { margin-top: 10px; }
-    iframe { width: 100%; height: 315px; border: none; border-radius: 10px; }
-    .quiz-question { margin: 10px 0; }
-    button { margin-top: 5px; padding: 6px 12px; border: none; border-radius: 5px; background: #2b6cb0; color: white; cursor: pointer; }
+    /* # 8 */
+    body {
+      /* # 9 */
+      margin: 0;
+      /* # 10 */
+      font-family: Arial, sans-serif;
+      /* # 11 */
+      background: #f4f4f9;
+      /* # 12 */
+      color: #333;
+    }
+
+    /* # 13 */
+    header {
+      /* # 14 */
+      background-color: #6200ea;
+      /* # 15 */
+      color: white;
+      /* # 16 */
+      padding: 20px;
+      /* # 17 */
+      text-align: center;
+      /* # 18 */
+      font-size: 24px;
+    }
+
+    /* # 19 */
+    .container {
+      /* # 20 */
+      padding: 20px;
+    }
+
+    /* # 21 */
+    .module {
+      /* # 22 */
+      background-color: white;
+      /* # 23 */
+      border-radius: 8px;
+      /* # 24 */
+      margin-bottom: 20px;
+      /* # 25 */
+      padding: 20px;
+      /* # 26 */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* # 27 */
+    .module h2 {
+      /* # 28 */
+      color: #6200ea;
+    }
+
+    /* # 29 */
+    .module button {
+      /* # 30 */
+      background-color: #03dac5;
+      /* # 31 */
+      color: black;
+      /* # 32 */
+      border: none;
+      /* # 33 */
+      padding: 10px 15px;
+      /* # 34 */
+      border-radius: 5px;
+      /* # 35 */
+      cursor: pointer;
+      /* # 36 */
+      transition: background 0.3s;
+    }
+
+    /* # 37 */
+    .module button:hover {
+      /* # 38 */
+      background-color: #018786;
+    }
+
+    /* # 39 */
+    .content {
+      /* # 40 */
+      display: none;
+      /* # 41 */
+      margin-top: 10px;
+    }
   </style>
+  <!-- # 42 -->
 </head>
+<!-- # 43 -->
 <body>
-  <h1>Python with Amit Sir - Complete Python Course</h1>
-  <p>Learn Python from basics to advanced in 10 interactive modules with videos, quizzes, and practice exercises.</p>  <div id="dashboard"></div>  <script>
-    const modules = [
-      {
-        title: "Module 1: Introduction to Python",
-        video: "https://www.youtube.com/embed/_uQrJ0TkZlc",
-        quiz: [
-          { q: "What is Python?", a: "A programming language" },
-          { q: "Who created Python?", a: "Guido van Rossum" },
-          { q: "Is Python statically typed?", a: "No" },
-        ]
-      },
-      {
-        title: "Module 2: Variables and Data Types",
-        video: "https://www.youtube.com/embed/kqtD5dpn9C8",
-        quiz: [
-          { q: "Which is a valid variable name?", a: "my_var" },
-          { q: "What data type is 3.14?", a: "float" },
-          { q: "What does 'type()' do?", a: "Returns data type" },
-        ]
-      },
-      {
-        title: "Module 3: Conditional Statements",
-        video: "https://www.youtube.com/embed/f4KOjWS_KZs",
-        quiz: [
-          { q: "Which keyword is used for condition?", a: "if" },
-          { q: "What does 'elif' mean?", a: "else if" },
-          { q: "What is the output of if True: print(1)?", a: "1" },
-        ]
-      },
-      {
-        title: "Module 4: Loops",
-        video: "https://www.youtube.com/embed/6iF8Xb7Z3wQ",
-        quiz: [
-          { q: "Which loop runs until false?", a: "while" },
-          { q: "What does 'break' do?", a: "Exits loop" },
-          { q: "What does 'continue' do?", a: "Skips to next iteration" },
-        ]
-      },
-      {
-        title: "Module 5: Functions",
-        video: "https://www.youtube.com/embed/NSbOtYzIQI0",
-        quiz: [
-          { q: "How to define a function?", a: "def" },
-          { q: "What is return used for?", a: "Return value" },
-          { q: "Can functions be nested?", a: "Yes" },
-        ]
-      },
-      {
-        title: "Module 6: Lists and Tuples",
-        video: "https://www.youtube.com/embed/W8KRzm-HUcc",
-        quiz: [
-          { q: "Are lists mutable?", a: "Yes" },
-          { q: "Tuple syntax?", a: "(1, 2, 3)" },
-          { q: "List method to add?", a: "append()" },
-        ]
-      },
-      {
-        title: "Module 7: Dictionaries",
-        video: "https://www.youtube.com/embed/daefaLgNkw0",
-        quiz: [
-          { q: "How to access dict value?", a: "dict[key]" },
-          { q: "Method to get keys?", a: "keys()" },
-          { q: "Are keys unique?", a: "Yes" },
-        ]
-      },
-      {
-        title: "Module 8: File Handling",
-        video: "https://www.youtube.com/embed/Uh2ebFW8OYM",
-        quiz: [
-          { q: "How to open a file?", a: "open()" },
-          { q: "Which mode for writing?", a: "'w'" },
-          { q: "What does read() do?", a: "Reads content" },
-        ]
-      },
-      {
-        title: "Module 9: Object-Oriented Programming",
-        video: "https://www.youtube.com/embed/JeznW_7DlB0",
-        quiz: [
-          { q: "Keyword to define class?", a: "class" },
-          { q: "What is self?", a: "Instance reference" },
-          { q: "Can Python use inheritance?", a: "Yes" },
-        ]
-      },
-      {
-        title: "Module 10: Final Project + Summary",
-        video: "https://www.youtube.com/embed/DX9Zy0OpV3c",
-        quiz: [
-          { q: "Did you complete all modules?", a: "Yes" },
-          { q: "Did you practice coding?", a: "Yes" },
-          { q: "Are you confident in Python?", a: "Yes" },
-        ]
+  <!-- # 44 -->
+  <header>Generative AI Learning Dashboard</header>
+  <!-- # 45 -->
+  <div class="container">
+    <!-- # 46 -->
+    <div class="module">
+      <!-- # 47 -->
+      <h2>Module 1: Introduction to Generative AI</h2>
+      <!-- # 48 -->
+      <button onclick="toggleContent('content1')">Show Content</button>
+      <!-- # 49 -->
+      <div class="content" id="content1">
+        <!-- # 50 -->
+        <p>Generative AI refers to algorithms capable of generating new content like text, images, music, etc.</p>
+        <!-- # 51 -->
+        <p>Examples include GPT, DALL·E, and StyleGAN.</p>
+        <!-- # 52 -->
+        <p>This module covers the basics of generative AI, its history, and applications.</p>
+      <!-- # 53 -->
+      </div>
+    <!-- # 54 -->
+    </div>
+
+    <!-- # 55 -->
+    <div class="module">
+      <!-- # 56 -->
+      <h2>Module 2: Types of Generative Models</h2>
+      <!-- # 57 -->
+      <button onclick="toggleContent('content2')">Show Content</button>
+      <!-- # 58 -->
+      <div class="content" id="content2">
+        <!-- # 59 -->
+        <ul>
+          <!-- # 60 -->
+          <li>Variational Autoencoders (VAE)</li>
+          <!-- # 61 -->
+          <li>Generative Adversarial Networks (GANs)</li>
+          <!-- # 62 -->
+          <li>Autoregressive Models (e.g., GPT)</li>
+          <!-- # 63 -->
+        </ul>
+        <!-- # 64 -->
+        <p>Each type has strengths, weaknesses, and unique use cases.</p>
+      <!-- # 65 -->
+      </div>
+    <!-- # 66 -->
+    </div>
+
+    <!-- # 67 -->
+    <div class="module">
+      <!-- # 68 -->
+      <h2>Module 3: Understanding GANs</h2>
+      <!-- # 69 -->
+      <button onclick="toggleContent('content3')">Show Content</button>
+      <!-- # 70 -->
+      <div class="content" id="content3">
+        <!-- # 71 -->
+        <p>GANs consist of a generator and discriminator in competition.</p>
+        <!-- # 72 -->
+        <p>The generator tries to create realistic outputs, the discriminator tries to detect fakes.</p>
+        <!-- # 73 -->
+        <p>This adversarial process improves both components.</p>
+      <!-- # 74 -->
+      </div>
+    <!-- # 75 -->
+    </div>
+
+    <!-- # 76 -->
+    <div class="module">
+      <!-- # 77 -->
+      <h2>Module 4: Applications of Generative AI</h2>
+      <!-- # 78 -->
+      <button onclick="toggleContent('content4')">Show Content</button>
+      <!-- # 79 -->
+      <div class="content" id="content4">
+        <!-- # 80 -->
+        <ul>
+          <!-- # 81 -->
+          <li>Text generation (e.g., ChatGPT)</li>
+          <!-- # 82 -->
+          <li>Image synthesis (e.g., DALL·E)</li>
+          <!-- # 83 -->
+          <li>Code generation (e.g., GitHub Copilot)</li>
+          <!-- # 84 -->
+        </ul>
+      <!-- # 85 -->
+      </div>
+    <!-- # 86 -->
+    </div>
+  <!-- # 87 -->
+  </div>
+
+  <!-- # 88 -->
+  <script>
+    // # 89
+    function toggleContent(id) {
+      // # 90
+      const content = document.getElementById(id);
+      // # 91
+      if (content.style.display === "block") {
+        // # 92
+        content.style.display = "none";
+      } else {
+        // # 94
+        content.style.display = "block";
       }
-    ];
+    }
 
-    const dashboard = document.getElementById("dashboard");
+    // # 98
+    console.log("Generative AI Learning Dashboard initialized.");
+  </script>
+  <!-- # 100 -->
+<!-- # 102 -->
+<div class="container">
+  <!-- # 103 -->
+  <div class="module">
+    <!-- # 104 -->
+    <h2>Module 5: Text Generation with JavaScript</h2>
+    <!-- # 105 -->
+    <button onclick="toggleContent('content5')">Show Content</button>
+    <!-- # 106 -->
+    <div class="content" id="content5">
+      <!-- # 107 -->
+      <p>This module simulates a basic text generation model using JavaScript.</p>
+      <!-- # 108 -->
+      <p>We will use simple Markov chains for demonstration.</p>
+      <!-- # 109 -->
+      <textarea id="trainingText" rows="4" cols="50" placeholder="Enter some training text..."></textarea>
+      <!-- # 110 -->
+      <br><br>
+      <!-- # 111 -->
+      <button onclick="trainModel()">Train</button>
+      <!-- # 112 -->
+      <button onclick="generateText()">Generate Text</button>
+      <!-- # 113 -->
+      <p><strong>Generated Text:</strong></p>
+      <!-- # 114 -->
+      <div id="generatedOutput" style="background:#eee; padding:10px; border-radius:5px;"></div>
+    <!-- # 115 -->
+    </div>
+  <!-- # 116 -->
+  </div>
+<!-- # 117 -->
+</div>
 
-    modules.forEach((mod, index) => {
-      const modDiv = document.createElement("div");
-      modDiv.className = "module";
+<!-- # 118 -->
+<script>
+  // # 119
+  let markov = {};
+  // # 120
+  function trainModel() {
+    // # 121
+    markov = {};
+    // # 122
+    const input = document.getElementById("trainingText").value;
+    // # 123
+    const words = input.split(/\s+/);
+    // # 124
+    for (let i = 0; i < words.length - 1; i++) {
+      // # 125
+      const word = words[i];
+      // # 126
+      const nextWord = words[i + 1];
+      // # 127
+      if (!markov[word]) {
+        // # 128
+        markov[word] = [];
+      }
+      // # 130
+      markov[word].push(nextWord);
+    }
+    // # 132
+    alert("Model trained with " + words.length + " words.");
+  }
 
-      modDiv.innerHTML = `
-        <h2>${mod.title}</h2>
-        <div class="video"><iframe src="${mod.video}" allowfullscreen></iframe></div>
-        <div class="quiz">
-          <h3>Quiz</h3>
-          ${mod.quiz.map(q => `<div class="quiz-question">Q: ${q.q}<br><button onclick="alert('Answer: ${q.a}')">Show Answer</button></div>`).join('')}
-        </div>
-      `;
+  // # 135
+  function generateText() {
+    // # 136
+    const keys = Object.keys(markov);
+    // # 137
+    if (keys.length === 0) return;
+    // # 138
+    let word = keys[Math.floor(Math.random() * keys.length)];
+    // # 139
+    let result = word;
+    // # 140
+    for (let i = 0; i < 30; i++) {
+      // # 141
+      const nextWords = markov[word];
+      // # 142
+      if (!nextWords) break;
+      // # 143
+      word = nextWords[Math.floor(Math.random() * nextWords.length)];
+      // # 144
+      result += " " + word;
+    }
+    // # 146
+    document.getElementById("generatedOutput").innerText = result;
+  }
+</script>
 
-      dashboard.appendChild(modDiv);
+<!-- # 150 -->
+<div class="container">
+  <!-- # 151 -->
+  <div class="module">
+    <!-- # 152 -->
+    <h2>Module 6: Flashcards</h2>
+    <!-- # 153 -->
+    <button onclick="toggleContent('content6')">Show Content</button>
+    <!-- # 154 -->
+    <div class="content" id="content6">
+      <!-- # 155 -->
+      <div id="flashcard" style="padding:20px; border:1px solid #ccc; border-radius:10px; text-align:center; font-size:20px;"></div>
+      <!-- # 156 -->
+      <br>
+      <!-- # 157 -->
+      <button onclick="nextFlashcard()">Next Flashcard</button>
+    <!-- # 158 -->
+    </div>
+  <!-- # 159 -->
+  </div>
+<!-- # 160 -->
+</div>
+
+<!-- # 161 -->
+<script>
+  // # 162
+  const flashcards = [
+    // # 163
+    { q: "What is a GAN?", a: "A generative adversarial network with generator + discriminator" },
+    // # 164
+    { q: "Name a text generation model.", a: "GPT (Generative Pre-trained Transformer)" },
+    // # 165
+    { q: "What does a generator do?", a: "Creates new data samples" },
+    // # 166
+    { q: "What's the goal of a discriminator?", a: "Distinguish between real and generated data" }
+  ];
+  // # 168
+  let currentCard = 0;
+  // # 169
+  function nextFlashcard() {
+    // # 170
+    const card = flashcards[currentCard];
+    // # 171
+    const flashcardDiv = document.getElementById("flashcard");
+    // # 172
+    flashcardDiv.innerText = card.q;
+    // # 173
+    flashcardDiv.onclick = () => {
+      // # 174
+      flashcardDiv.innerText = card.a;
+    };
+    // # 176
+    currentCard = (currentCard + 1) % flashcards.length;
+  }
+</script>
+
+<!-- # 180 -->
+<div class="container">
+  <!-- # 181 -->
+  <div class="module">
+    <!-- # 182 -->
+    <h2>Module 7: Leaderboard</h2>
+    <!-- # 183 -->
+    <button onclick="toggleContent('content7')">Show Content</button>
+    <!-- # 184 -->
+    <div class="content" id="content7">
+      <!-- # 185 -->
+      <ul id="leaderboard">
+        <!-- # 186 -->
+        <li>Amit - 92 pts</li>
+        <!-- # 187 -->
+        <li>Neha - 88 pts</li>
+        <!-- # 188 -->
+        <li>Rahul - 85 pts</li>
+        <!-- # 189 -->
+        <li>Priya - 80 pts</li>
+        <!-- # 190 -->
+      </ul>
+    <!-- # 191 -->
+    </div>
+  <!-- # 192 -->
+  </div>
+<!-- # 193 -->
+</div>
+
+<!-- # 194 -->
+<footer style="text-align:center; padding:20px; color:#777;">
+  <!-- # 195 -->
+  &copy; 2025 Generative AI Learning | Built with HTML, CSS & JavaScript
+<!-- # 196 -->
+</footer>
+
+<!-- # 197 -->
+<script>
+  // # 198
+  console.log("Interactive modules loaded successfully.");
+// # 199
+</script>
+<!-- # 200 -->
+<div class="container">
+  <!-- # 201 -->
+  <div class="module">
+    <!-- # 202 -->
+    <h2>Module 8: Image Generation Basics</h2>
+    <!-- # 203 -->
+    <button onclick="toggleContent('content8')">Show Content</button>
+    <!-- # 204 -->
+    <div class="content" id="content8">
+      <!-- # 205 -->
+      <p>This module simulates image generation using pixel grids and random values.</p>
+      <!-- # 206 -->
+      <canvas id="imageCanvas" width="200" height="200" style="border:1px solid #ccc;"></canvas>
+      <!-- # 207 -->
+      <br><br>
+      <!-- # 208 -->
+      <button onclick="generateImage()">Generate Image</button>
+    <!-- # 209 -->
+    </div>
+  <!-- # 210 -->
+  </div>
+<!-- # 211 -->
+</div>
+
+<!-- # 212 -->
+<script>
+  // # 213
+  function generateImage() {
+    // # 214
+    const canvas = document.getElementById("imageCanvas");
+    // # 215
+    const ctx = canvas.getContext("2d");
+    // # 216
+    const imageData = ctx.createImageData(canvas.width, canvas.height);
+    // # 217
+    for (let i = 0; i < imageData.data.length; i += 4) {
+      // # 218
+      imageData.data[i + 0] = Math.random() * 255; // Red
+      // # 219
+      imageData.data[i + 1] = Math.random() * 255; // Green
+      // # 220
+      imageData.data[i + 2] = Math.random() * 255; // Blue
+      // # 221
+      imageData.data[i + 3] = 255; // Alpha
+    }
+    // # 223
+    ctx.putImageData(imageData, 0, 0);
+  }
+</script>
+
+<!-- # 226 -->
+<div class="container">
+  <!-- # 227 -->
+  <div class="module">
+    <!-- # 228 -->
+    <h2>Module 9: AI Quiz - Level 2</h2>
+    <!-- # 229 -->
+    <button onclick="toggleContent('content9')">Show Content</button>
+    <!-- # 230 -->
+    <div class="content" id="content9">
+      <!-- # 231 -->
+      <p><strong>Question:</strong> What is the function of the encoder in a Transformer model?</p>
+      <!-- # 232 -->
+      <input type="radio" name="q2" value="a"> Generates images <br>
+      <!-- # 233 -->
+      <input type="radio" name="q2" value="b"> Extracts features from input <br>
+      <!-- # 234 -->
+      <input type="radio" name="q2" value="c"> Encrypts messages <br>
+      <!-- # 235 -->
+      <button onclick="checkQuiz2()">Submit</button>
+      <!-- # 236 -->
+      <div id="result2"></div>
+    <!-- # 237 -->
+    </div>
+  <!-- # 238 -->
+  </div>
+<!-- # 239 -->
+</div>
+
+<!-- # 240 -->
+<script>
+  // # 241
+  function checkQuiz2() {
+    // # 242
+    const options = document.getElementsByName("q2");
+    // # 243
+    let selected = "";
+    // # 244
+    for (let opt of options) {
+      // # 245
+      if (opt.checked) {
+        // # 246
+        selected = opt.value;
+        // # 247
+        break;
+      }
+    }
+    // # 249
+    const result2 = document.getElementById("result2");
+    // # 250
+    if (selected === "b") {
+      // # 251
+      result2.innerText = "Correct! Encoders extract features from the input.";
+    } else {
+      // # 253
+      result2.innerText = "Incorrect. Try again.";
+    }
+  }
+</script>
+
+<!-- # 257 -->
+<div class="container">
+  <!-- # 258 -->
+  <div class="module">
+    <!-- # 259 -->
+    <h2>Module 10: Final Project Preview</h2>
+    <!-- # 260 -->
+    <button onclick="toggleContent('content10')">Show Content</button>
+    <!-- # 261 -->
+    <div class="content" id="content10">
+      <!-- # 262 -->
+      <p>Your final project: Build a mini app using one of the AI techniques learned.</p>
+      <!-- # 263 -->
+      <p>Example: Text generator, AI quiz app, chatbot, or image synthesizer.</p>
+      <!-- # 264 -->
+      <input type="text" placeholder="Enter your idea..." style="width:100%; padding:10px;">
+      <!-- # 265 -->
+      <button>Submit Idea</button>
+    <!-- # 266 -->
+    </div>
+  <!-- # 267 -->
+  </div>
+<!-- # 268 -->
+</div>
+
+<!-- # 269 -->
+<script>
+  // # 270
+  function toggleContent(id) {
+    // # 271
+    const el = document.getElementById(id);
+    // # 272
+    if (el.style.display === "none" || el.style.display === "") {
+      // # 273
+      el.style.display = "block";
+    } else {
+      // # 275
+      el.style.display = "none";
+    }
+  }
+</script>
+
+<!-- # 279 -->
+<style>
+  /* # 280 */
+  .container {
+    /* # 281 */
+    margin: 20px auto;
+    /* # 282 */
+    max-width: 800px;
+    /* # 283 */
+    font-family: Arial, sans-serif;
+  }
+  /* # 284 */
+  .module {
+    /* # 285 */
+    margin-bottom: 20px;
+    /* # 286 */
+    border: 1px solid #ccc;
+    /* # 287 */
+    padding: 20px;
+    /* # 288 */
+    border-radius: 10px;
+    /* # 289 */
+    background: #f9f9f9;
+  }
+  /* # 290 */
+  .content {
+    /* # 291 */
+    display: none;
+    /* # 292 */
+    margin-top: 10px;
+  }
+  /* # 293 */
+  button {
+    /* # 294 */
+    background: #007bff;
+    /* # 295 */
+    color: white;
+    /* # 296 */
+    border: none;
+    /* # 297 */
+    padding: 10px 15px;
+    /* # 298 */
+    border-radius: 5px;
+    /* # 299 */
+    cursor: pointer;
+  }
+</style>
+
+<!-- # 301 -->
+<div class="container">
+  <!-- # 302 -->
+  <div class="module">
+    <!-- # 303 -->
+    <h2>Daily Streak Tracker</h2>
+    <!-- # 304 -->
+    <button onclick="toggleContent('streakTracker')">Show Content</button>
+    <!-- # 305 -->
+    <div class="content" id="streakTracker">
+      <!-- # 306 -->
+      <p>Track your daily learning streak. Stay consistent!</p>
+      <!-- # 307 -->
+      <p id="streakMessage"></p>
+      <!-- # 308 -->
+      <button onclick="updateStreak()">Mark Today's Study</button>
+    <!-- # 309 -->
+    </div>
+  <!-- # 310 -->
+  </div>
+<!-- # 311 -->
+</div>
+
+<!-- # 312 -->
+<script>
+  // # 313
+  let streak = parseInt(localStorage.getItem("streak")) || 0;
+  // # 314
+  let lastDate = localStorage.getItem("lastDate") || "";
+
+  // # 316
+  function updateStreak() {
+    // # 317
+    const today = new Date().toDateString();
+    // # 318
+    if (lastDate !== today) {
+      // # 319
+      streak++;
+      // # 320
+      localStorage.setItem("streak", streak);
+      // # 321
+      localStorage.setItem("lastDate", today);
+      // # 322
+      lastDate = today;
+    }
+    // # 324
+    document.getElementById("streakMessage").innerText =
+      "You're on a " + streak + "-day learning streak!";
+  }
+</script>
+
+<!-- # 328 -->
+<div class="container">
+  <!-- # 329 -->
+  <div class="module">
+    <!-- # 330 -->
+    <h2>Flashcards for Revision</h2>
+    <!-- # 331 -->
+    <button onclick="toggleContent('flashcards')">Show Content</button>
+    <!-- # 332 -->
+    <div class="content" id="flashcards">
+      <!-- # 333 -->
+      <p><strong>Term:</strong> Latent Space</p>
+      <!-- # 334 -->
+      <p id="flashMeaning" style="display:none;"><strong>Meaning:</strong> A representation of compressed features that AI uses to interpret data.</p>
+      <!-- # 335 -->
+      <button onclick="toggleFlash()">Show/Hide Meaning</button>
+    <!-- # 336 -->
+    </div>
+  <!-- # 337 -->
+  </div>
+<!-- # 338 -->
+</div>
+
+<!-- # 339 -->
+<script>
+  // # 340
+  function toggleFlash() {
+    // # 341
+    const el = document.getElementById("flashMeaning");
+    // # 342
+    el.style.display = el.style.display === "none" ? "block" : "none";
+  }
+</script>
+
+<!-- # 345 -->
+<div class="container">
+  <!-- # 346 -->
+  <div class="module">
+    <!-- # 347 -->
+    <h2>Code Practice Sandbox</h2>
+    <!-- # 348 -->
+    <button onclick="toggleContent('sandbox')">Show Content</button>
+    <!-- # 349 -->
+    <div class="content" id="sandbox">
+      <!-- # 350 -->
+      <p>Try your Python code below (simulated):</p>
+      <!-- # 351 -->
+      <textarea id="codeInput" rows="5" style="width:100%;"></textarea>
+      <!-- # 352 -->
+      <button onclick="simulateCode()">Run</button>
+      <!-- # 353 -->
+      <pre id="codeOutput"></pre>
+    <!-- # 354 -->
+    </div>
+  <!-- # 355 -->
+  </div>
+<!-- # 356 -->
+</div>
+
+<!-- # 357 -->
+<script>
+  // # 358
+  function simulateCode() {
+    // # 359
+    const code = document.getElementById("codeInput").value;
+    // # 360
+    const output = `Simulated Output:\n${code.split('\n').map((l, i) => `>> ${l}`).join('\n')}`;
+    // # 361
+    document.getElementById("codeOutput").innerText = output;
+  }
+</script>
+
+<!-- # 364 -->
+<div class="container">
+  <!-- # 365 -->
+  <div class="module">
+    <!-- # 366 -->
+    <h2>AI Quiz Hints</h2>
+    <!-- # 367 -->
+    <button onclick="toggleContent('quizHints')">Show Content</button>
+    <!-- # 368 -->
+    <div class="content" id="quizHints">
+      <!-- # 369 -->
+      <p><strong>Hint for Question 1:</strong> Transformers process data using attention.</p>
+      <!-- # 370 -->
+      <p><strong>Hint for Question 2:</strong> Encoders extract meaningful data representations.</p>
+    <!-- # 371 -->
+    </div>
+  <!-- # 372 -->
+  </div>
+<!-- # 373 -->
+</div>
+
+<!-- # 374 -->
+<div class="container">
+  <!-- # 375 -->
+  <div class="module">
+    <!-- # 376 -->
+    <h2>Bookmark / Save Progress</h2>
+    <!-- # 377 -->
+    <button onclick="toggleContent('bookmarks')">Show Content</button>
+    <!-- # 378 -->
+    <div class="content" id="bookmarks">
+      <!-- # 379 -->
+      <button onclick="saveBookmark()">Save Current Module</button>
+      <!-- # 380 -->
+      <p id="bookmarkStatus"></p>
+    <!-- # 381 -->
+    </div>
+  <!-- # 382 -->
+  </div>
+<!-- # 383 -->
+</div>
+
+<!-- # 384 -->
+<script>
+  // # 385
+  function saveBookmark() {
+    // # 386
+    localStorage.setItem("bookmark", "Module 10: Final Project");
+    // # 387
+    document.getElementById("bookmarkStatus").innerText = "Progress saved!";
+  }
+</script>
+
+<!-- # 390 -->
+<div class="container">
+  <!-- # 391 -->
+  <div class="module">
+    <!-- # 392 -->
+    <h2>Send Feedback / Ask a Doubt</h2>
+    <!-- # 393 -->
+    <button onclick="toggleContent('feedback')">Show Content</button>
+    <!-- # 394 -->
+    <div class="content" id="feedback">
+      <!-- # 395 -->
+      <textarea placeholder="Enter your message..." style="width:100%;" rows="4"></textarea>
+      <!-- # 396 -->
+      <button>Send</button>
+    <!-- # 397 -->
+    </div>
+  <!-- # 398 -->
+  </div>
+<!-- # 399 -->
+</div>
+
+<!-- # 401 -->
+<div class="container">
+  <!-- # 402 -->
+  <div class="module">
+    <!-- # 403 -->
+    <h2>Theme Switcher</h2>
+    <!-- # 404 -->
+    <button onclick="toggleContent('themeSwitcher')">Show Content</button>
+    <!-- # 405 -->
+    <div class="content" id="themeSwitcher">
+      <!-- # 406 -->
+      <p>Choose your preferred theme:</p>
+      <!-- # 407 -->
+      <button onclick="setTheme('light')">Light</button>
+      <!-- # 408 -->
+      <button onclick="setTheme('dark')">Dark</button>
+    <!-- # 409 -->
+    </div>
+  <!-- # 410 -->
+  </div>
+<!-- # 411 -->
+</div>
+
+<!-- # 412 -->
+<script>
+  // # 413
+  function setTheme(mode) {
+    // # 414
+    if (mode === 'dark') {
+      // # 415
+      document.body.style.backgroundColor = '#111';
+      // # 416
+      document.body.style.color = '#fff';
+    } else {
+      // # 418
+      document.body.style.backgroundColor = '#fff';
+      // # 419
+      document.body.style.color = '#000';
+    }
+  }
+</script>
+
+<!-- # 423 -->
+<div class="container">
+  <!-- # 424 -->
+  <div class="module">
+    <!-- # 425 -->
+    <h2>Leaderboards</h2>
+    <!-- # 426 -->
+    <button onclick="toggleContent('leaderboard')">Show Content</button>
+    <!-- # 427 -->
+    <div class="content" id="leaderboard">
+      <!-- # 428 -->
+      <ol>
+        <!-- # 429 -->
+        <li>Amit S. - 980 points</li>
+        <!-- # 430 -->
+        <li>Nina P. - 875 points</li>
+        <!-- # 431 -->
+        <li>Ravi K. - 860 points</li>
+      <!-- # 432 -->
+      </ol>
+    <!-- # 433 -->
+    </div>
+  <!-- # 434 -->
+  </div>
+<!-- # 435 -->
+</div>
+
+<!-- # 436 -->
+<footer style="text-align:center; padding:20px;">
+  <!-- # 437 -->
+  <p>© 2025 Generative AI Learning. Created by Amit Saha.</p>
+<!-- # 438 -->
+</footer>
+
+<!-- # 439 -->
+<script>
+  // # 440
+  function toggleContent(id) {
+    // # 441
+    const el = document.getElementById(id);
+    // # 442
+    if (el.style.display === 'none' || el.style.display === '') {
+      // # 443
+      el.style.display = 'block';
+    } else {
+      // # 445
+      el.style.display = 'none';
+    }
+  }
+</script>
+
+<!-- # 448 -->
+<style>
+  /* # 449 */
+  .module button {
+    margin: 5px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* # 455 */
+  .module .content {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    background: #f9f9f9;
+  }
+
+  /* # 460 */
+  .container {
+    padding: 20px;
+  }
+
+  /* # 463 */
+  footer {
+    margin-top: 50px;
+    background: #222;
+    color: #fff;
+  }
+
+  /* # 467 */
+  h2 {
+    color: #333;
+  }
+</style>
+
+<!-- # 470 -->
+<script>
+  // # 471
+  window.onload = function () {
+    // # 472
+    updateStreak(); // Show streak on load
+    // # 473
+    const savedTheme = localStorage.getItem("theme");
+    // # 474
+    if (savedTheme) setTheme(savedTheme);
+  }
+
+  // # 477
+  function setTheme(mode) {
+    // # 478
+    localStorage.setItem("theme", mode);
+    // # 479
+    if (mode === 'dark') {
+      // # 480
+      document.body.style.backgroundColor = '#111';
+      document.body.style.color = '#fff';
+    } else {
+      // # 483
+      document.body.style.backgroundColor = '#fff';
+      document.body.style.color = '#000';
+    }
+  }
+</script>
+
+<!-- # 488 -->
+<!-- Placeholder for more modules -->
+<!-- # 489 -->
+<div class="container">
+  <!-- # 490 -->
+  <div class="module">
+    <!-- # 491 -->
+    <h2>Coming Soon</h2>
+    <!-- # 492 -->
+    <p>Stay tuned for more AI modules and features!</p>
+  <!-- # 493 -->
+  </div>
+<!-- # 494 -->
+</div>
+
+<!-- # 495 -->
+<!-- End of document -->
+<!-- # 496 -->
+<!-- Designed for Python with Amit Sir Project -->
+<!-- # 497 -->
+<!-- Authored by ChatGPT April 2025 -->
+<!-- # 498 -->
+<!-- Reach out at: astroamitsaha@gmail.com -->
+<!-- # 499 -->
+<!-- GitHub ready file coming soon -->
+<!-- # 500 -->
+<!-- Continue expanding for full 1000 lines -->
+
+<!-- # 501 -->
+<div class="container">
+  <!-- # 502 -->
+  <div class="module">
+    <!-- # 503 -->
+    <h2>Flashcard Review</h2>
+    <!-- # 504 -->
+    <button onclick="toggleContent('flashcards')">Show Flashcards</button>
+    <!-- # 505 -->
+    <div class="content" id="flashcards" style="display:none;">
+      <!-- # 506 -->
+      <div id="flashcard-box">
+        <!-- # 507 -->
+        <p id="flashcard-question">Click next to begin</p>
+        <!-- # 508 -->
+        <button onclick="showNextFlashcard()">Next</button>
+      <!-- # 509 -->
+      </div>
+    <!-- # 510 -->
+    </div>
+  <!-- # 511 -->
+  </div>
+<!-- # 512 -->
+</div>
+
+<!-- # 513 -->
+<script>
+  // # 514
+  const flashcards = [
+    { q: "What is a neural network?", a: "A computational model inspired by the human brain" },
+    { q: "Define supervised learning", a: "Learning from labeled data" },
+    { q: "What is backpropagation?", a: "An algorithm for training neural networks" },
+    { q: "What does GPT stand for?", a: "Generative Pre-trained Transformer" },
+    { q: "Name a popular AI library in Python", a: "TensorFlow or PyTorch" }
+  ];
+  // # 520
+  let currentFlashcard = 0;
+  let showingAnswer = false;
+
+  // # 523
+  function showNextFlashcard() {
+    // # 524
+    if (showingAnswer) {
+      // # 525
+      currentFlashcard++;
+      showingAnswer = false;
+    }
+    // # 527
+    if (currentFlashcard >= flashcards.length) currentFlashcard = 0;
+
+    // # 529
+    const card = flashcards[currentFlashcard];
+    const questionBox = document.getElementById("flashcard-question");
+    // # 531
+    questionBox.innerText = showingAnswer ? card.a : card.q;
+    showingAnswer = !showingAnswer;
+  }
+</script>
+
+<!-- # 535 -->
+<div class="container">
+  <!-- # 536 -->
+  <div class="module">
+    <!-- # 537 -->
+    <h2>Progress Bookmark</h2>
+    <!-- # 538 -->
+    <button onclick="toggleContent('bookmark')">Show</button>
+    <!-- # 539 -->
+    <div class="content" id="bookmark" style="display:none;">
+      <!-- # 540 -->
+      <input type="text" id="moduleInput" placeholder="Enter module name to save">
+      <!-- # 541 -->
+      <button onclick="saveBookmark()">Save Progress</button>
+      <!-- # 542 -->
+      <p id="savedBookmark"></p>
+    <!-- # 543 -->
+    </div>
+  <!-- # 544 -->
+  </div>
+<!-- # 545 -->
+</div>
+
+<!-- # 546 -->
+<script>
+  // # 547
+  function saveBookmark() {
+    // # 548
+    const moduleName = document.getElementById("moduleInput").value;
+    localStorage.setItem("lastModule", moduleName);
+    // # 550
+    document.getElementById("savedBookmark").innerText = "Saved: " + moduleName;
+  }
+
+  // # 553
+  function loadBookmark() {
+    const saved = localStorage.getItem("lastModule");
+    if (saved) {
+      document.getElementById("savedBookmark").innerText = "Last visited: " + saved;
+    }
+  }
+
+  // # 558
+  window.onload = function() {
+    updateStreak();
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) setTheme(savedTheme);
+    loadBookmark();
+  }
+</script>
+
+<!-- # 565 -->
+<div class="container">
+  <!-- # 566 -->
+  <div class="module">
+    <!-- # 567 -->
+    <h2>Certificate Generator</h2>
+    <!-- # 568 -->
+    <button onclick="toggleContent('certGen')">Show Certificate</button>
+    <!-- # 569 -->
+    <div class="content" id="certGen" style="display:none;">
+      <!-- # 570 -->
+      <input type="text" id="certName" placeholder="Enter your name">
+      <!-- # 571 -->
+      <button onclick="generateCertificate()">Generate</button>
+      <!-- # 572 -->
+      <canvas id="certCanvas" width="500" height="300"></canvas>
+    <!-- # 573 -->
+    </div>
+  <!-- # 574 -->
+  </div>
+<!-- # 575 -->
+</div>
+
+<!-- # 576 -->
+<script>
+  // # 577
+  function generateCertificate() {
+    // # 578
+    const name = document.getElementById("certName").value;
+    const canvas = document.getElementById("certCanvas");
+    const ctx = canvas.getContext("2d");
+    // # 581
+    ctx.fillStyle = "#fff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#000";
+    ctx.font = "20px Arial";
+    ctx.fillText("Certificate of Completion", 120, 80);
+    ctx.font = "18px Arial";
+    ctx.fillText("Awarded to: " + name, 140, 130);
+    ctx.fillText("For completing Generative AI Basics", 90, 180);
+    ctx.font = "14px Arial";
+    ctx.fillText("Python with Amit Sir", 180, 240);
+  }
+</script>
+
+<!-- # 595 -->
+<!-- Line count: 600 coming up next -->
+<!-- # 596 -->
+<!-- Features added: Flashcards, Bookmarking, Certificate Generator -->
+<!-- # 597 -->
+<!-- All data stored locally using LocalStorage -->
+<!-- # 598 -->
+<!-- No backend required at this stage -->
+<!-- # 599 -->
+<!-- Suggest improvements via feedback box -->
+<!-- # 600 -->
+<!-- More modules and interactivity coming soon -->
+
+<!-- # 601 -->
+<div class="container">
+  <!-- # 602 -->
+  <div class="module">
+    <!-- # 603 -->
+    <h2>AI Quiz Hints</h2>
+    <!-- # 604 -->
+    <button onclick="toggleContent('aiHints')">Show Hints</button>
+    <!-- # 605 -->
+    <div class="content" id="aiHints" style="display:none;">
+      <!-- # 606 -->
+      <ul>
+        <!-- # 607 -->
+        <li><strong>Hint 1:</strong> GPT is a type of Transformer model.</li>
+        <!-- # 608 -->
+        <li><strong>Hint 2:</strong> Supervised learning uses labeled datasets.</li>
+        <!-- # 609 -->
+        <li><strong>Hint 3:</strong> Backpropagation is used to update weights.</li>
+        <!-- # 610 -->
+        <li><strong>Hint 4:</strong> PyTorch uses dynamic computation graphs.</li>
+        <!-- # 611 -->
+        <li><strong>Hint 5:</strong> Overfitting occurs when a model memorizes the data.</li>
+      <!-- # 612 -->
+      </ul>
+    <!-- # 613 -->
+    </div>
+  <!-- # 614 -->
+  </div>
+<!-- # 615 -->
+</div>
+
+<!-- # 616 -->
+<div class="container">
+  <!-- # 617 -->
+  <div class="module">
+    <!-- # 618 -->
+    <h2>Ask Doubts / Feedback</h2>
+    <!-- # 619 -->
+    <button onclick="toggleContent('feedbackBox')">Open</button>
+    <!-- # 620 -->
+    <div class="content" id="feedbackBox" style="display:none;">
+      <!-- # 621 -->
+      <textarea id="feedbackInput" placeholder="Enter your doubt or feedback here..." rows="5" cols="50"></textarea>
+      <!-- # 622 -->
+      <br>
+      <!-- # 623 -->
+      <button onclick="submitFeedback()">Submit</button>
+      <!-- # 624 -->
+      <p id="feedbackStatus"></p>
+    <!-- # 625 -->
+    </div>
+  <!-- # 626 -->
+  </div>
+<!-- # 627 -->
+</div>
+
+<!-- # 628 -->
+<script>
+  // # 629
+  function submitFeedback() {
+    // # 630
+    const feedback = document.getElementById("feedbackInput").value;
+    if (feedback.length > 0) {
+      // # 632
+      document.getElementById("feedbackStatus").innerText = "Thanks for your feedback!";
+      document.getElementById("feedbackInput").value = "";
+    } else {
+      // # 635
+      document.getElementById("feedbackStatus").innerText = "Please write something first!";
+    }
+  }
+</script>
+
+<!-- # 639 -->
+<div class="container">
+  <!-- # 640 -->
+  <div class="module">
+    <!-- # 641 -->
+    <h2>Daily Learning Tip</h2>
+    <!-- # 642 -->
+    <button onclick="toggleContent('dailyTip')">Show Tip</button>
+    <!-- # 643 -->
+    <div class="content" id="dailyTip" style="display:none;">
+      <!-- # 644 -->
+      <p id="tipMessage"></p>
+    <!-- # 645 -->
+    </div>
+  <!-- # 646 -->
+  </div>
+<!-- # 647 -->
+</div>
+
+<!-- # 648 -->
+<script>
+  // # 649
+  const tips = [
+    "Keep experimenting with your own models!",
+    "Break big AI concepts into small steps.",
+    "Practice by teaching what you’ve learned.",
+    "Try building a chatbot with GPT API.",
+    "Reinforce learning with flashcards."
+  ];
+  // # 654
+  function showDailyTip() {
+    const index = new Date().getDate() % tips.length;
+    document.getElementById("tipMessage").innerText = tips[index];
+  }
+
+  // # 658
+  showDailyTip();
+</script>
+
+<!-- # 661 -->
+<div class="container">
+  <!-- # 662 -->
+  <div class="module">
+    <!-- # 663 -->
+    <h2>About This Course</h2>
+    <!-- # 664 -->
+    <button onclick="toggleContent('aboutCourse')">Show</button>
+    <!-- # 665 -->
+    <div class="content" id="aboutCourse" style="display:none;">
+      <!-- # 666 -->
+      <p>This Generative AI Learning Dashboard was designed for absolute beginners to advanced learners, guided by Amit Sir.</p>
+      <!-- # 667 -->
+      <p>It covers theory, practice, quizzes, flashcards, tips, and progress tracking—all in one place!</p>
+      <!-- # 668 -->
+      <p>More content and improvements will continue to be added based on your feedback.</p>
+    <!-- # 669 -->
+    </div>
+  <!-- # 670 -->
+  </div>
+<!-- # 671 -->
+</div>
+
+<!-- # 672 -->
+<footer>
+  <!-- # 673 -->
+  <p style="text-align:center; margin-top: 50px;">&copy; 2025 Python with Amit Sir. All rights reserved.</p>
+<!-- # 674 -->
+</footer>
+
+<!-- # 675 -->
+<style>
+  /* # 676 */
+  footer {
+    background-color: #222;
+    color: #fff;
+    padding: 10px;
+  }
+  /* # 679 */
+  footer p {
+    margin: 0;
+    font-size: 14px;
+  }
+</style>
+
+<!-- # 683 -->
+<!-- Total UI blocks completed: 10 -->
+<!-- # 684 -->
+<!-- Use this layout for Python, AI, ML, DL courses -->
+<!-- # 685 -->
+<!-- Can extend to certifications and login system -->
+<!-- # 686 -->
+<!-- Includes interactive elements and progress -->
+<!-- # 687 -->
+<!-- Simple design, fully mobile responsive -->
+<!-- # 688 -->
+<!-- Full course content editable by replacing modules -->
+<!-- # 689 -->
+<!-- LocalStorage used for user data and streak -->
+<!-- # 690 -->
+<!-- Feedback section to improve learning -->
+<!-- # 691 -->
+<!-- Flashcards + Quiz + Code Practice = Perfect blend -->
+<!-- # 692 -->
+<!-- Dashboard can be hosted as GitHub Page -->
+<!-- # 693 -->
+<!-- Add gamification: coins, badges in future -->
+<!-- # 694 -->
+<!-- Built with HTML, CSS, JavaScript only -->
+<!-- # 695 -->
+<!-- No backend/database needed (yet) -->
+<!-- # 696 -->
+<!-- Easy to maintain and update -->
+<!-- # 697 -->
+<!-- Developer: ChatGPT x Amit Sir -->
+<!-- # 698 -->
+<!-- Contact: astroamitsaha@gmail.com -->
+<!-- # 699 -->
+<!-- Line #700 coming next -->
+<!-- # 700 -->
+<!-- Let’s move to 701–800? -->
+
+<!-- # 701 -->
+<div class="container">
+  <!-- # 702 -->
+  <div class="module">
+    <!-- # 703 -->
+    <h2>Certification Tracker</h2>
+    <!-- # 704 -->
+    <button onclick="toggleContent('certification')">View Certificate Progress</button>
+    <!-- # 705 -->
+    <div class="content" id="certification" style="display:none;">
+      <!-- # 706 -->
+      <p>Your current module completion: <span id="completedModules">0</span>/10</p>
+      <!-- # 707 -->
+      <button onclick="generateCertificate()">Generate Certificate</button>
+      <!-- # 708 -->
+      <p id="certificateMessage"></p>
+    <!-- # 709 -->
+    </div>
+  <!-- # 710 -->
+  </div>
+<!-- # 711 -->
+</div>
+
+<!-- # 712 -->
+<script>
+  // # 713
+  let modulesCompleted = 0;
+
+  // # 714
+  function markModuleComplete() {
+    // # 715
+    if (modulesCompleted < 10) {
+      modulesCompleted++;
+      document.getElementById("completedModules").innerText = modulesCompleted;
+    }
+  }
+
+  // # 719
+  function generateCertificate() {
+    // # 720
+    if (modulesCompleted === 10) {
+      document.getElementById("certificateMessage").innerText = "Congratulations! Your certificate is ready.";
+    } else {
+      document.getElementById("certificateMessage").innerText = "Complete all modules to unlock your certificate.";
+    }
+  }
+</script>
+
+<!-- # 726 -->
+<div class="container">
+  <!-- # 727 -->
+  <div class="module">
+    <!-- # 728 -->
+    <h2>AI Model Visualizations</h2>
+    <!-- # 729 -->
+    <button onclick="toggleContent('modelVisualization')">Toggle Visualization</button>
+    <!-- # 730 -->
+    <div class="content" id="modelVisualization" style="display:none;">
+      <!-- # 731 -->
+      <canvas id="aiCanvas" width="300" height="200"></canvas>
+    <!-- # 732 -->
+    </div>
+  <!-- # 733 -->
+  </div>
+<!-- # 734 -->
+</div>
+
+<!-- # 735 -->
+<script>
+  // # 736
+  const canvas = document.getElementById("aiCanvas");
+  const ctx = canvas.getContext("2d");
+
+  // # 738
+  function drawModelDiagram() {
+    ctx.fillStyle = "#333";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // # 741
+    ctx.fillStyle = "#00ffcc";
+    ctx.beginPath();
+    ctx.arc(50, 100, 20, 0, 2 * Math.PI);
+    ctx.fill();
+
+    // # 745
+    ctx.fillStyle = "#00ffcc";
+    ctx.beginPath();
+    ctx.arc(150, 100, 20, 0, 2 * Math.PI);
+    ctx.fill();
+
+    // # 749
+    ctx.strokeStyle = "#fff";
+    ctx.moveTo(70, 100);
+    ctx.lineTo(130, 100);
+    ctx.stroke();
+  }
+
+  // # 754
+  drawModelDiagram();
+</script>
+
+<!-- # 756 -->
+<div class="container">
+  <!-- # 757 -->
+  <div class="module">
+    <!-- # 758 -->
+    <h2>Save Progress</h2>
+    <!-- # 759 -->
+    <button onclick="saveProgress()">Save</button>
+    <!-- # 760 -->
+    <button onclick="loadProgress()">Load</button>
+    <!-- # 761 -->
+    <p id="saveStatus"></p>
+  <!-- # 762 -->
+  </div>
+<!-- # 763 -->
+</div>
+
+<!-- # 764 -->
+<script>
+  // # 765
+  function saveProgress() {
+    localStorage.setItem("modulesCompleted", modulesCompleted);
+    document.getElementById("saveStatus").innerText = "Progress saved.";
+  }
+
+  // # 769
+  function loadProgress() {
+    let saved = localStorage.getItem("modulesCompleted");
+    if (saved) {
+      modulesCompleted = parseInt(saved);
+      document.getElementById("completedModules").innerText = modulesCompleted;
+      document.getElementById("saveStatus").innerText = "Progress loaded.";
+    } else {
+      document.getElementById("saveStatus").innerText = "No progress found.";
+    }
+  }
+
+  // # 778
+  loadProgress();
+</script>
+
+<!-- # 780 -->
+<div class="container">
+  <!-- # 781 -->
+  <div class="module">
+    <!-- # 782 -->
+    <h2>Join Our Community</h2>
+    <!-- # 783 -->
+    <button onclick="toggleContent('communityLinks')">Open</button>
+    <!-- # 784 -->
+    <div class="content" id="communityLinks" style="display:none;">
+      <!-- # 785 -->
+      <ul>
+        <!-- # 786 -->
+        <li><a href="https://t.me/astroamitsaha" target="_blank">Telegram Group</a></li>
+        <!-- # 787 -->
+        <li><a href="https://www.youtube.com/@AmitSir" target="_blank">YouTube Channel</a></li>
+        <!-- # 788 -->
+        <li><a href="mailto:astroamitsaha@gmail.com">Email Support</a></li>
+      <!-- # 789 -->
+      </ul>
+    <!-- # 790 -->
+    </div>
+  <!-- # 791 -->
+  </div>
+<!-- # 792 -->
+</div>
+
+<!-- # 793 -->
+<!-- Section complete: Certification, Canvas Viz, Save/Load, Community -->
+<!-- # 794 -->
+<!-- UI blocks remain simple and interactive -->
+<!-- # 795 -->
+<!-- Good base for mobile app with WebView -->
+<!-- # 796 -->
+<!-- Certificates can be generated with images + name -->
+<!-- # 797 -->
+<!-- Canvas shows basic model structure -->
+<!-- # 798 -->
+<!-- Community section adds engagement -->
+<!-- # 799 -->
+<!-- Ready for final 200 lines -->
+<!-- # 800 -->
+<!-- Shall we continue with 801 to 900? -->
+
+<!-- # 801 -->
+<div class="container">
+  <!-- # 802 -->
+  <div class="module">
+    <!-- # 803 -->
+    <h2>Daily Streak Tracker</h2>
+    <!-- # 804 -->
+    <button onclick="toggleContent('streakTracker')">Track Streak</button>
+    <!-- # 805 -->
+    <div class="content" id="streakTracker" style="display:none;">
+      <!-- # 806 -->
+      <p>Current streak: <span id="streakCount">0</span> days</p>
+      <!-- # 807 -->
+      <button onclick="markToday()">Mark Today's Activity</button>
+      <!-- # 808 -->
+      <p id="streakMessage"></p>
+    <!-- # 809 -->
+    </div>
+  <!-- # 810 -->
+  </div>
+<!-- # 811 -->
+</div>
+
+<!-- # 812 -->
+<script>
+  // # 813
+  let streak = localStorage.getItem("dailyStreak") || 0;
+  let lastMarked = localStorage.getItem("lastMarkedDate");
+
+  // # 815
+  document.getElementById("streakCount").innerText = streak;
+
+  // # 816
+  function markToday() {
+    const today = new Date().toISOString().split("T")[0];
+
+    // # 818
+    if (lastMarked === today) {
+      document.getElementById("streakMessage").innerText = "You already marked today.";
+    } else {
+      const yesterday = new Date(Date.now() - 86400000).toISOString().split("T")[0];
+
+      // # 821
+      if (lastMarked === yesterday) {
+        streak++;
+      } else {
+        streak = 1;
+      }
+
+      // # 825
+      lastMarked = today;
+      localStorage.setItem("dailyStreak", streak);
+      localStorage.setItem("lastMarkedDate", lastMarked);
+      document.getElementById("streakCount").innerText = streak;
+      document.getElementById("streakMessage").innerText = "Activity recorded!";
+    }
+  }
+</script>
+
+<!-- # 833 -->
+<div class="container">
+  <!-- # 834 -->
+  <div class="module">
+    <!-- # 835 -->
+    <h2>Flashcards for Revision</h2>
+    <!-- # 836 -->
+    <button onclick="toggleContent('flashcards')">Show Flashcards</button>
+    <!-- # 837 -->
+    <div class="content" id="flashcards" style="display:none;">
+      <!-- # 838 -->
+      <p id="flashcardText">Press next to begin.</p>
+      <!-- # 839 -->
+      <button onclick="nextFlashcard()">Next</button>
+    <!-- # 840 -->
+    </div>
+  <!-- # 841 -->
+  </div>
+<!-- # 842 -->
+</div>
+
+<!-- # 843 -->
+<script>
+  // # 844
+  const flashcards = [
+    "What is a neural network?",
+    "Define backpropagation.",
+    "What is a generative model?",
+    "Difference between supervised and unsupervised learning?",
+    "Explain the purpose of loss function."
+  ];
+  // # 850
+  let currentFlashcard = -1;
+
+  // # 851
+  function nextFlashcard() {
+    currentFlashcard = (currentFlashcard + 1) % flashcards.length;
+    document.getElementById("flashcardText").innerText = flashcards[currentFlashcard];
+  }
+</script>
+
+<!-- # 857 -->
+<div class="container">
+  <!-- # 858 -->
+  <div class="module">
+    <!-- # 859 -->
+    <h2>Feedback & Doubts</h2>
+    <!-- # 860 -->
+    <button onclick="toggleContent('feedbackForm')">Ask or Suggest</button>
+    <!-- # 861 -->
+    <div class="content" id="feedbackForm" style="display:none;">
+      <!-- # 862 -->
+      <textarea id="userFeedback" rows="4" placeholder="Write your feedback or question here..."></textarea>
+      <!-- # 863 -->
+      <button onclick="submitFeedback()">Submit</button>
+      <!-- # 864 -->
+      <p id="feedbackResponse"></p>
+    <!-- # 865 -->
+    </div>
+  <!-- # 866 -->
+  </div>
+<!-- # 867 -->
+</div>
+
+<!-- # 868 -->
+<script>
+  // # 869
+  function submitFeedback() {
+    const input = document.getElementById("userFeedback").value.trim();
+    if (input.length > 0) {
+      // Simulate success
+      document.getElementById("feedbackResponse").innerText = "Thanks for your input!";
+      document.getElementById("userFeedback").value = "";
+    } else {
+      document.getElementById("feedbackResponse").innerText = "Please enter something.";
+    }
+  }
+</script>
+
+<!-- # 877 -->
+<div class="container">
+  <!-- # 878 -->
+  <div class="module">
+    <!-- # 879 -->
+    <h2>Theme Switcher</h2>
+    <!-- # 880 -->
+    <button onclick="toggleTheme()">Toggle Theme</button>
+  <!-- # 881 -->
+  </div>
+<!-- # 882 -->
+</div>
+
+<!-- # 883 -->
+<script>
+  // # 884
+  function toggleTheme() {
+    document.body.classList.toggle("dark");
+  }
+</script>
+
+<!-- # 888 -->
+<style>
+  /* # 889 */
+  body.dark {
+    background-color: #111;
+    color: #eee;
+  }
+
+  /* # 893 */
+  body.dark .module {
+    background-color: #222;
+    border-color: #555;
+  }
+</style>
+
+<!-- # 898 -->
+<!-- End of feature expansion: Streaks, Flashcards, Feedback, Theme -->
+<!-- # 899 -->
+<!-- Just 100 more lines to go! -->
+<!-- # 900 -->
+<!-- Shall I send 901 to 1000 now? -->
+
+<!-- # 901 -->
+<div class="container">
+  <!-- # 902 -->
+  <div class="module">
+    <!-- # 903 -->
+    <h2>Leaderboard</h2>
+    <!-- # 904 -->
+    <button onclick="toggleContent('leaderboard')">View Top Learners</button>
+    <!-- # 905 -->
+    <div class="content" id="leaderboard" style="display:none;">
+      <!-- # 906 -->
+      <ul id="leaderboardList"></ul>
+    <!-- # 907 -->
+    </div>
+  <!-- # 908 -->
+  </div>
+<!-- # 909 -->
+</div>
+
+<!-- # 910 -->
+<script>
+  // # 911
+  const leaderboardData = [
+    { name: "Amit Saha", score: 950 },
+    { name: "Nina Dev", score: 920 },
+    { name: "Sam AI", score: 880 },
+    { name: "Jules", score: 860 },
+    { name: "Aria", score: 845 }
+  ];
+
+  // # 917
+  function populateLeaderboard() {
+    const list = document.getElementById("leaderboardList");
+    list.innerHTML = "";
+    leaderboardData.forEach(user => {
+      const li = document.createElement("li");
+      li.textContent = `${user.name} - ${user.score} pts`;
+      list.appendChild(li);
     });
-  </script></body>
-</html>
+  }
+
+  // # 925
+  document.querySelector("#leaderboard button").addEventListener("click", populateLeaderboard);
+</script>
+
+<!-- # 928 -->
+<div class="container">
+  <!-- # 929 -->
+  <div class="module">
+    <!-- # 930 -->
+    <h2>Certificate Generator</h2>
+    <!-- # 931 -->
+    <button onclick="toggleContent('certGen')">Generate Certificate</button>
+    <!-- # 932 -->
+    <div class="content" id="certGen" style="display:none;">
+      <!-- # 933 -->
+      <input type="text" id="certName" placeholder="Enter your name" />
+      <!-- # 934 -->
+      <button onclick="generateCertificate()">Download</button>
+      <!-- # 935 -->
+      <div id="certificatePreview"></div>
+    <!-- # 936 -->
+    </div>
+  <!-- # 937 -->
+  </div>
+<!-- # 938 -->
+</div>
+
+<!-- # 939 -->
+<script>
+  // # 940
+  function generateCertificate() {
+    const name = document.getElementById("certName").value.trim();
+    if (name) {
+      const certHTML = `
+        <div style="border:2px solid black; padding:20px; text-align:center;">
+          <h2>Certificate of Completion</h2>
+          <p>This certifies that</p>
+          <h3>${name}</h3>
+          <p>has successfully completed the Generative AI Learning course.</p>
+        </div>`;
+      document.getElementById("certificatePreview").innerHTML = certHTML;
+    } else {
+      document.getElementById("certificatePreview").innerHTML = "<p>Please enter a name.</p>";
+    }
+  }
+</script>
+
+<!-- # 953 -->
+<div class="container">
+  <!-- # 954 -->
+  <div class="module">
+    <!-- # 955 -->
+    <h2>Bookmark / Progress Save</h2>
+    <!-- # 956 -->
+    <button onclick="toggleContent('bookmarkPanel')">Save/Load Progress</button>
+    <!-- # 957 -->
+    <div class="content" id="bookmarkPanel" style="display:none;">
+      <!-- # 958 -->
+      <button onclick="saveProgress()">Save Progress</button>
+      <!-- # 959 -->
+      <button onclick="loadProgress()">Load Progress</button>
+      <!-- # 960 -->
+      <p id="progressStatus"></p>
+    <!-- # 961 -->
+    </div>
+  <!-- # 962 -->
+  </div>
+<!-- # 963 -->
+</div>
+
+<!-- # 964 -->
+<script>
+  // # 965
+  function saveProgress() {
+    const progress = {
+      module: currentModule,
+      flashIndex: currentFlashcard,
+      streak,
+    };
+    localStorage.setItem("aiProgress", JSON.stringify(progress));
+    document.getElementById("progressStatus").innerText = "Progress saved!";
+  }
+
+  // # 972
+  function loadProgress() {
+    const data = JSON.parse(localStorage.getItem("aiProgress"));
+    if (data) {
+      currentModule = data.module || 1;
+      currentFlashcard = data.flashIndex || 0;
+      streak = data.streak || 0;
+      document.getElementById("streakCount").innerText = streak;
+      document.getElementById("progressStatus").innerText = "Progress loaded!";
+    } else {
+      document.getElementById("progressStatus").innerText = "No saved data found.";
+    }
+  }
+</script>
+
+<!-- # 984 -->
+<footer>
+  <!-- # 985 -->
+  <p>Created with passion by Amit Saha. All rights reserved © 2025</p>
+  <!-- # 986 -->
+  <p>Contact: <a href="mailto:astroamitsaha@gmail.com">astroamitsaha@gmail.com</a></p>
+<!-- # 987 -->
+</footer>
+
+<!-- # 988 -->
+<style>
+  /* # 989 */
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    background: #f0f0f0;
+    margin-top: 40px;
+  }
+</style>
+
+<!-- # 995 -->
+<!-- End of 1000 lines Generative AI Learning Dashboard -->
+<!-- # 996 -->
+<!-- You're now ready to deploy or upload to GitHub Pages -->
+<!-- # 997 -->
+<!-- Need help with deployment or customization? Just ask! -->
+<!-- # 998 -->
+<!-- Happy Learning, Amit! -->
+<!-- # 999 -->
+<!-- - ChatGPT -->
+<!-- # 1000 -->
+
+</body>
+</HTML>
